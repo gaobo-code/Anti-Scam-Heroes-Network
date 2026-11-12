@@ -11,6 +11,8 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    "public/vendor/**",
+    "app/heroes/huijian/memorial/vendor/**",
     "next-env.d.ts",
   ]),
 ]);
