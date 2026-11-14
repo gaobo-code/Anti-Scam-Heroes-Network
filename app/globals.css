@@ -28,8 +28,8 @@ a { color:inherit; text-decoration:none; } button { font:inherit; }
 
 /* Real-time WebGL memorial */
 .memorial-world-3d { min-height:100svh; padding-top:110px; background:#93adb0; }
-.memorial-world-3d .world-heading { position:absolute; z-index:7; top:116px; left:50%; width:min(620px,calc(100% - 100px)); transform:translateX(-50%); pointer-events:none; }
-.memorial-world-3d .world-heading h1 { font-size:clamp(30px,3.4vw,48px); }
+.memorial-world-3d .world-heading { position:absolute; z-index:7; top:132px; left:50%; width:min(680px,calc(100% - 96px)); transform:translateX(-50%); pointer-events:none; }
+.memorial-world-3d .world-heading h1 { margin:0; font-size:clamp(28px,3vw,42px); line-height:1.4; letter-spacing:.16em; text-wrap:balance; }
 .webgl-memorial,.webgl-fallback { position:absolute; z-index:0; inset:0; overflow:hidden; background:linear-gradient(#8ba9af,#d8d3b8); }
 .webgl-memorial canvas { display:block; width:100%; height:100%; cursor:grab; }.webgl-memorial canvas:active { cursor:grabbing; }
 .webgl-loading { position:absolute; z-index:-1; inset:0; display:grid; place-items:center; color:white; font:13px SimSun,serif; letter-spacing:.2em; }.webgl-loading span { position:absolute; width:46px; height:46px; border:1px solid rgba(255,255,255,.35); border-top-color:white; border-radius:50%; animation:webgl-spin 1.2s linear infinite; }
@@ -64,22 +64,38 @@ a { color:inherit; text-decoration:none; } button { font:inherit; }
 }
 
 /* Keep the memorial itself unobstructed: ritual controls live at the right edge. */
-.memorial-world-3d .ritual-status { position:absolute; top:220px; right:max(32px,calc((100vw - 1320px)/2)); width:270px; min-width:0; margin:0; }
-.memorial-world-3d .world-controls { position:absolute; top:268px; right:max(32px,calc((100vw - 1320px)/2)); width:270px; margin:0; grid-template-columns:1fr; border-radius:14px; }
-.memorial-world-3d .world-flower-options { grid-template-columns:1fr; }
-.memorial-world-3d .world-flower-options button { min-height:64px; border-right:0; border-bottom:1px solid rgba(255,255,255,.18); }
-.memorial-world-3d .world-flower-options button.selected { box-shadow:inset 3px 0 0 #f0c967; }
-.memorial-world-3d .ceremony-button { min-height:76px; }
-.memorial-world-3d .offering-count { position:absolute; z-index:9; top:552px; right:max(32px,calc((100vw - 1320px)/2)); width:270px; margin:0; line-height:1.7; }
+.memorial-world-3d .ritual-panel { position:absolute; z-index:9; top:220px; right:24px; width:270px; display:grid; grid-template-rows:44px auto; gap:12px; }
+.memorial-world-3d .ritual-status { position:static; display:flex; align-items:center; justify-content:center; width:100%; height:44px; min-width:0; margin:0; padding:6px 10px; line-height:1.5; box-sizing:border-box; }
+.memorial-world-3d .ritual-status span { flex-shrink:0; }
+.memorial-world-3d .world-controls { position:static; width:100%; margin:0; grid-template-columns:1fr; border-radius:14px; box-sizing:border-box; }
+.memorial-world-3d .world-flower-options { grid-template-columns:repeat(2,minmax(0,1fr)); max-height:min(360px,max(180px,calc(100svh - 450px))); overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#8faaa0 transparent; }
+.memorial-world-3d .world-flower-options button { position:relative; min-width:0; min-height:60px; padding:10px 22px 10px 10px; gap:8px; border-right:1px solid rgba(255,255,255,.12); border-bottom:1px solid rgba(255,255,255,.18); transition:background-color .18s,box-shadow .18s; }
+.memorial-world-3d .world-flower-options button:nth-child(even) { border-right:0; }
+.memorial-world-3d .world-flower-icon { font-size:26px; flex-shrink:0; }
+.memorial-world-3d .world-flower-options strong { margin-bottom:4px; font-size:12px; }
+.memorial-world-3d .world-flower-options small { font-size:9px; letter-spacing:0; }
+.memorial-world-3d .world-flower-options button:focus-visible { outline:2px solid #f0c967; outline-offset:-3px; }
+.memorial-world-3d .world-flower-options button:disabled { cursor:wait; opacity:.65; }
+.memorial-world-3d .world-flower-options button.selected { background:rgba(240,201,103,.24); box-shadow:inset 0 0 0 2px #f0c967; }
+.memorial-world-3d .world-flower-options button.selected strong { color:#ffe3a0; }
+.memorial-world-3d .world-flower-options button.selected small { color:#f4e3ba; }
+.memorial-world-3d .world-flower-options button.selected::after { content:"✓"; position:absolute; top:6px; right:6px; width:15px; height:15px; display:grid; place-items:center; border-radius:50%; background:#f0c967; color:#17382c; font:800 11px/1 Arial,sans-serif; }
+.memorial-world-3d .world-flower-options button.selected:disabled { opacity:1; }
+.memorial-world-3d .ceremony-button { min-height:60px; padding:10px 20px; }
+.memorial-world-3d .offering-count { position:static; width:100%; margin:0; padding:0; line-height:1.7; }
 
 @media (max-width:800px) {
-  .memorial-world-3d .ritual-status { top:205px; right:10px; width:132px; padding:9px 8px; font-size:10px; letter-spacing:.04em; }
-  .memorial-world-3d .world-controls { top:246px; right:10px; width:132px; border-radius:10px; }
-  .memorial-world-3d .world-flower-options button { min-height:52px; padding:7px 8px; gap:7px; }
+  .memorial-world-3d .world-heading { top:132px; width:calc(100% - 40px); }
+  .memorial-world-3d .world-heading h1 { font-size:clamp(22px,5vw,28px); letter-spacing:.10em; }
+  .memorial-world-3d .ritual-panel { top:205px; right:8px; width:144px; grid-template-rows:48px auto; gap:8px; }
+  .memorial-world-3d .ritual-status { height:48px; padding:6px 8px; font-size:10px; letter-spacing:.04em; }
+  .memorial-world-3d .world-controls { border-radius:10px; }
+  .memorial-world-3d .world-flower-options { grid-template-columns:1fr; max-height:240px; }
+  .memorial-world-3d .world-flower-options button { min-height:52px; padding:7px 24px 7px 8px; gap:7px; }
   .memorial-world-3d .world-flower-icon { width:24px; font-size:22px; text-align:center; }
   .memorial-world-3d .world-flower-options strong { margin:0; font-size:11px; }
   .memorial-world-3d .world-flower-options small { display:none; }
-  .memorial-world-3d .ceremony-button { min-height:62px; padding:8px 5px; }
+  .memorial-world-3d .ceremony-button { min-height:50px; padding:8px 5px; }
   .memorial-world-3d .ceremony-button strong { font-size:14px; letter-spacing:.08em; }
-  .memorial-world-3d .offering-count { top:482px; right:10px; width:132px; padding:0; font-size:8px; letter-spacing:.04em; }
+  .memorial-world-3d .offering-count { font-size:8px; letter-spacing:.04em; }
 }
