@@ -7,7 +7,8 @@ const chords = [[45, 52, 57], [43, 50, 55], [41, 48, 53], [40, 47, 52],
 export function startMemorialMusic() {
   const context = new AudioContext();
   const master = context.createGain();
-  master.gain.value = .65;
+  // Boost the quiet synthesized theme on phone speakers.
+  master.gain.value = window.matchMedia("(width < 1280px)").matches ? 2.6 : .65;
   master.connect(context.destination);
   let disposed = false;
   let step = 0;

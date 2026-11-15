@@ -79,6 +79,7 @@ export default function Memorial3D({ ritual, selected, offerings, nextSlot, revi
       offeringEdge.position.set(0,.225,2.925); grave.add(offeringEdge);
 
       // A Chinese memorial terrace: upright merit steles, cypress and restrained bronze details.
+      const decorationStart = scene.children.length;
       const honorStone = mat(0xaab2ad,.92);
       const darkStone = mat(0x929b96,.9);
       const ribbon = mat(0x9b9787,.68,.12);
@@ -110,6 +111,7 @@ export default function Memorial3D({ ritual, selected, offerings, nextSlot, revi
 
       // Paired cypresses provide a living guard of honor close to the monument.
       [[-3.75,-1.9,.82],[3.75,-1.9,.82],[-4.35,-3.05,.72],[4.35,-3.05,.72]].forEach(([x,z,s])=>addTree(x,z,s));
+      const sideDecorations = scene.children.slice(decorationStart);
       const heroLight=new THREE.SpotLight(0xe9e4d7,4.1,17,.4,.76,1.25); heroLight.position.set(0,7.8,3.8); heroLight.target.position.set(0,1.7,-2.6); scene.add(heroLight,heroLight.target);
 
       const labelCanvas = document.createElement("canvas"); labelCanvas.width=768; labelCanvas.height=1024; const ctx=labelCanvas.getContext("2d")!;
@@ -511,11 +513,11 @@ export default function Memorial3D({ ritual, selected, offerings, nextSlot, revi
         if(t>1-ramp)return 1-(1-t)*(1-t)/(2*ramp*(1-ramp));
         return (t-ramp/2)/(1-ramp);
       };
-      const pointer=(event:PointerEvent)=>{ const rect=mount.getBoundingClientRect(); targetX=((event.clientX-rect.left)/rect.width-.5)*2; targetY=((event.clientY-rect.top)/rect.height-.5)*2; };
+      const pointer=(event:PointerEvent)=>{ if (mount.clientWidth < 1280 || event.pointerType === "touch") return; const rect=mount.getBoundingClientRect(); targetX=((event.clientX-rect.left)/rect.width-.5)*2; targetY=((event.clientY-rect.top)/rect.height-.5)*2; };
       mount.addEventListener("pointermove",pointer);
-      const resize=()=>{ const w=mount.clientWidth,h=mount.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }; resize(); const observer=new ResizeObserver(resize); observer.observe(mount);
+      const resize=()=>{ const w=mount.clientWidth,h=mount.clientHeight; renderer.setSize(w,h,false); sideDecorations.forEach((object: any) => { object.visible = w >= 1024; }); camera.aspect=w/h; camera.fov=w<1280 ? 37 : 42; camera.updateProjectionMatrix(); }; resize(); const observer=new ResizeObserver(resize); observer.observe(mount);
 
-      function animate(now:number){ if(disposed)return; const dt=Math.min((now-last)/1000,.05); last=now; mx+=(targetX-mx)*.035; my+=(targetY-my)*.035; camera.position.x=mx*2.3; camera.position.y=3.7-my*.55; camera.position.z=11.5-Math.abs(mx)*.25; camera.lookAt(0,1.7,-1.4);
+      function animate(now:number){ if(disposed)return; const dt=Math.min((now-last)/1000,.05); last=now; if ((mount?.clientWidth ?? 0) < 1280) { mx=0; my=0; targetX=0; targetY=0; } mx+=(targetX-mx)*.035; my+=(targetY-my)*.035; camera.position.x=mx*2.3; camera.position.y=3.7-my*.55; camera.position.z=11.5-Math.abs(mx)*.25; camera.lookAt(0,1.7,-1.4);
         lake.material.opacity=.82+Math.sin(now*.0007)*.04;
         const current=stateRef.current; while(flowerCount<current.offerings.length){ const f=createFlower(current.offerings[flowerCount],flowerCount); f.scale.setScalar(.01); f.userData.born=now; flowerCount++; }
         if(renderedRevision!==current.revision) {

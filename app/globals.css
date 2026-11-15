@@ -41,7 +41,7 @@ a { color:inherit; text-decoration:none; } button { font:inherit; }
 .memorial-world-3d .offering-count { z-index:9; text-shadow:0 1px 4px rgba(0,0,0,.5); }
 @keyframes webgl-spin { to { transform:rotate(360deg); } }
 
-@media (max-width:800px) {
+@media (width < 1280px) {
   .memorial-world-3d { padding-top:90px; }.memorial-world-3d .world-heading { top:92px; width:calc(100% - 80px); }.memorial-world-3d .world-heading h1 { font-size:28px; }.memorial-world-3d .world-heading>p:last-child { display:none; }.world-stage-spacer { height:510px; }.memorial-world-3d .ritual-status { margin:-95px auto 12px; }.webgl-depth-hint { right:12px; bottom:245px; font-size:0; }.webgl-depth-hint::after { content:"拖动环望"; font-size:8px; }.memorial-world-3d .music-toggle { top:92px; }
 }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none!important; } }
@@ -59,7 +59,7 @@ a { color:inherit; text-decoration:none; } button { font:inherit; }
 .world-controls { position:relative; z-index:9; width:min(880px,100%); margin:0 auto; display:grid; grid-template-columns:1fr 220px; color:white; background:rgba(9,31,24,.72); border:1px solid rgba(255,255,255,.28); border-radius:16px; backdrop-filter:blur(14px); box-shadow:0 18px 50px rgba(0,0,0,.25); overflow:hidden; }.world-flower-options { display:grid; grid-template-columns:repeat(3,1fr); }.world-flower-options button { min-height:90px; padding:12px 16px; color:white; background:transparent; border:0; border-right:1px solid rgba(255,255,255,.18); display:flex; align-items:center; gap:12px; text-align:left; cursor:pointer; }.world-flower-options button:hover,.world-flower-options button.selected { background:rgba(255,255,255,.14); }.world-flower-options button.selected { box-shadow:inset 0 -3px 0 #f0c967; }.world-flower-icon { font-size:33px; color:#fff7e2; }.world-flower-icon.flower-sunflower { color:#f3bd36; }.world-flower-options strong,.world-flower-options small { display:block; }.world-flower-options strong { margin-bottom:6px; font-size:13px; }.world-flower-options small { color:#afc0b8; font-size:9px; letter-spacing:.1em; }.ceremony-button { padding:12px 20px; color:#183129; background:#f3d47f; border:0; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; }.ceremony-button:hover:not(:disabled) { background:#fff0b8; }.ceremony-button:disabled { cursor:wait; opacity:.8; }.ceremony-button span { font-size:9px; letter-spacing:.14em; }.ceremony-button strong { font-family:SimSun,serif; font-size:18px; letter-spacing:.15em; }.offering-count { position:relative; z-index:4; margin:14px auto 0; color:rgba(255,255,255,.7); text-align:center; font-size:10px; letter-spacing:.12em; }.offering-count strong { color:#f1cf71; font-size:14px; }.floating-leaves i { position:absolute; z-index:1; top:-30px; width:13px; height:8px; border-radius:100% 0 100% 0; background:#d5a92d; opacity:.75; animation:leaf-fall 12s linear infinite; }.floating-leaves i:nth-child(1){left:8%;animation-delay:-2s}.floating-leaves i:nth-child(2){left:28%;animation-delay:-8s}.floating-leaves i:nth-child(3){left:62%;animation-delay:-5s}.floating-leaves i:nth-child(4){left:78%;animation-delay:-11s}.floating-leaves i:nth-child(5){left:91%;animation-delay:-4s}
 @keyframes world-breathe { to { transform:scale(1.075) translateY(-5px); } } @keyframes haze-drift { to { transform:translateX(6%); opacity:.65; } } @keyframes music-bar { to { height:13px; } } @keyframes flower-sway { to { margin-left:3px; transform:translateX(var(--x)) rotate(calc(var(--r) + 4deg)); } } @keyframes place-flower { 70% { transform:translate(70px,50px) scale(.9); opacity:1; } 100% { transform:translate(95px,75px) scale(.5); opacity:0; } } @keyframes stone-glow { 50% { filter:drop-shadow(0 0 35px rgba(255,232,170,.95)); } } @keyframes leaf-fall { 0% { transform:translate(0,-40px) rotate(0); } 100% { transform:translate(100px,110vh) rotate(720deg); } }
 
-@media (max-width:800px) {
+@media (width < 1280px) {
   .memorial-page .memorial-nav { width:calc(100% - 32px); }.memorial-world { padding:96px 14px 30px; }.world-heading h1 { font-size:34px; }.world-heading>p:last-child { font-size:12px; }.music-toggle { top:96px; right:14px; font-size:0; padding:10px; }.music-toggle .music-bars { margin:0; }.world-stage { height:460px; margin-top:30px; }.memorial-platform { transform:translateX(-50%) scale(.84); }.world-stage:hover .memorial-platform { transform:translateX(-50%) scale(.84); }.visitor { left:0; z-index:12; transform:translateX(-120px) scale(.78); }.ritual-approach .visitor { transform:translateX(10px) scale(.78); }.ritual-bow .visitor { transform:translateX(10px) rotate(28deg) scale(.78); }.ritual-place .visitor { transform:translateX(42px) translateY(20px) rotate(48deg) scale(.78); }.world-controls { grid-template-columns:1fr; border-radius:12px; }.world-flower-options button { min-height:76px; padding:9px; gap:7px; }.world-flower-icon { font-size:26px; }.world-flower-options small { display:none; }.ceremony-button { min-height:70px; }.offering-count { padding:0 12px; }.ritual-status { margin-top:-18px; }
 }
 
@@ -84,7 +84,7 @@ a { color:inherit; text-decoration:none; } button { font:inherit; }
 .memorial-world-3d .ceremony-button { min-height:60px; padding:10px 20px; }
 .memorial-world-3d .offering-count { position:static; width:100%; margin:0; padding:0; line-height:1.7; }
 
-@media (max-width:800px) {
+@media (width < 1280px) {
   .memorial-world-3d .world-heading { top:132px; width:calc(100% - 40px); }
   .memorial-world-3d .world-heading h1 { font-size:clamp(22px,5vw,28px); letter-spacing:.10em; }
   .memorial-world-3d .ritual-panel { top:205px; right:8px; width:144px; grid-template-rows:48px auto; gap:8px; }
@@ -99,3 +99,156 @@ a { color:inherit; text-decoration:none; } button { font:inherit; }
   .memorial-world-3d .ceremony-button strong { font-size:14px; letter-spacing:.08em; }
   .memorial-world-3d .offering-count { font-size:8px; letter-spacing:.04em; }
 }
+
+/* Mobile ceremony: reserve the upper viewport for the memorial landscape. */
+@media (width < 1280px) {
+  .memorial-world-3d { min-height:100svh; padding:96px 14px 260px; }
+  .memorial-world-3d .world-stage-spacer { height:max(320px,calc(100svh - 356px)); }
+  .memorial-world-3d .webgl-memorial,
+  .memorial-world-3d > .webgl-fallback { bottom:244px; }
+  .memorial-world-3d .world-heading { top:118px; }
+  .memorial-world-3d .music-toggle { top:78px; right:14px; min-height:36px; font-size:11px; padding:8px 12px; }
+  .memorial-world-3d .ritual-panel { position:fixed; top:auto; bottom:0; left:0; right:0; width:100%; padding:10px 12px calc(12px + env(safe-area-inset-bottom)); gap:8px; grid-template-rows:32px auto; background:linear-gradient(180deg,rgba(17,37,31,.9),#11251f 30%); }
+  .memorial-world-3d .ritual-status { height:32px; font-size:12px; border:0; background:transparent; backdrop-filter:none; }
+  .memorial-world-3d .world-controls { overflow:hidden; }
+  .memorial-world-3d .world-flower-options { display:flex; max-height:none; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x proximity; touch-action:pan-x; }
+  .memorial-world-3d .world-flower-options button { flex:0 0 112px; min-height:74px; padding:10px 20px 10px 8px; scroll-snap-align:start; }
+  .memorial-world-3d .world-flower-options button:nth-child(even) { border-right:1px solid rgba(255,255,255,.12); }
+  .memorial-world-3d .world-flower-options small { display:block; margin-top:5px; font-size:10px; white-space:nowrap; }
+  .memorial-world-3d .ceremony-button { min-height:52px; }
+  .memorial-world-3d .ceremony-button strong { font-size:17px; }
+  .memorial-world-3d .webgl-depth-hint { bottom:18px; }
+  .memorial-page .memorial-footnote { padding-bottom:250px; }
+}
+
+@media (width < 1280px) {
+  .memorial-world-3d { height:100svh; min-height:540px; padding:0; }
+  .memorial-world-3d .world-stage-spacer { height:100%; }
+  .memorial-world-3d .webgl-memorial,
+  .memorial-world-3d > .webgl-fallback { bottom:96px; }
+  .memorial-world-3d .ritual-panel { padding:4px 8px calc(6px + env(safe-area-inset-bottom)); gap:2px; grid-template-rows:24px auto; }
+  .memorial-world-3d .ritual-status { height:24px; padding:2px 6px; font-size:11px; }
+  .memorial-world-3d .world-controls { display:grid; grid-template-columns:minmax(0,1fr) 92px; border-radius:8px; }
+  .memorial-world-3d .world-flower-options { min-width:0; }
+  .memorial-world-3d .world-flower-options button { flex-basis:62px; min-height:54px; flex-direction:column; justify-content:center; gap:2px; padding:4px; }
+  .memorial-world-3d .world-flower-icon { font-size:20px; line-height:22px; }
+  .memorial-world-3d .world-flower-options strong { font-size:10px; white-space:nowrap; }
+  .memorial-world-3d .world-flower-options small { display:none; }
+  .memorial-world-3d .world-flower-options button.selected::after { width:11px; height:11px; font-size:8px; top:3px; right:3px; }
+  .memorial-world-3d .ceremony-button { min-height:54px; padding:6px; }
+  .memorial-world-3d .ceremony-button strong { font-size:14px; letter-spacing:0; }
+  .memorial-page .memorial-footnote { display:none; }
+}
+
+@media (width < 1280px) {
+  .memorial-world-3d .world-heading { display:none; }
+}
+
+@media (width < 1280px) {
+  .memorial-world-3d .webgl-depth-hint { display:none; }
+  .memorial-world-3d .webgl-memorial canvas,
+  .memorial-world-3d .webgl-memorial canvas:active { cursor:default; }
+}
+
+.music-label-mobile { display:none; }
+@media (width < 1280px) {
+  .music-label-desktop { display:none; }
+  .music-label-mobile { display:inline; }
+  .memorial-world-3d .music-toggle { gap:5px; padding:6px 8px; min-height:32px; font-size:10px; letter-spacing:0; }
+}
+
+@media (width < 1280px) {
+  .memorial-world-3d .music-toggle {
+    gap:7px; min-height:32px; padding:6px 10px;
+    color:#d2dcd5; background:rgba(17,37,31,.64);
+    border:1px solid rgba(229,217,179,.28); border-radius:999px;
+    box-shadow:0 2px 10px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.06);
+    backdrop-filter:blur(12px); font-size:11px; letter-spacing:.08em;
+    transition:background .2s,border-color .2s,color .2s;
+  }
+  .memorial-world-3d .music-toggle.playing,
+  .memorial-world-3d .music-toggle.playing:hover {
+    color:#eed8a1; background:rgba(31,49,39,.78); border-color:rgba(238,216,161,.48);
+  }
+  .memorial-world-3d .music-toggle:hover { background:rgba(31,49,39,.78); }
+  .memorial-world-3d .music-label-mobile { display:flex; align-items:center; gap:6px; }
+  .music-state-dot { width:4px; height:4px; border-radius:50%; background:#87958d; }
+  .playing .music-state-dot { background:#eed8a1; box-shadow:0 0 5px rgba(238,216,161,.4); }
+  .memorial-world-3d .music-toggle:focus-visible { outline:2px solid #eed8a1; outline-offset:3px; }
+}
+
+/* A quiet, compact audio control on mobile. */
+@media (width < 1280px) {
+  .memorial-world-3d .music-toggle,
+  .memorial-world-3d .music-toggle.playing,
+  .memorial-world-3d .music-toggle:hover,
+  .memorial-world-3d .music-toggle.playing:hover {
+    min-height:32px; padding:6px 9px; gap:0;
+    color:rgba(255,255,255,.88); background:rgba(19,34,29,.48);
+    border:1px solid rgba(255,255,255,.2); border-radius:6px;
+    box-shadow:none; font-size:11px; letter-spacing:.04em;
+  }
+  .memorial-world-3d .music-toggle > .music-bars { display:none; }
+  .memorial-world-3d .music-label-mobile { gap:5px; }
+  .music-speaker { width:15px; height:15px; flex-shrink:0; }
+}
+
+@media (width < 1280px) {
+  .memorial-world-3d .music-toggle,
+  .memorial-world-3d .music-toggle.playing,
+  .memorial-world-3d .music-toggle:hover,
+  .memorial-world-3d .music-toggle.playing:hover {
+    color:#344b40; background:rgba(245,241,229,.92);
+    border-color:rgba(255,253,244,.65);
+  }
+}
+
+@media (width < 1280px) {
+  .memorial-world-3d .music-toggle,
+  .memorial-world-3d .music-toggle.playing,
+  .memorial-world-3d .music-toggle:hover,
+  .memorial-world-3d .music-toggle.playing:hover {
+    color:#fff8f0; background:#b9473d;
+    border-color:rgba(255,231,218,.35);
+  }
+}
+
+/* Share the live viewport between the scene and the actual panel height. */
+@media (width < 1280px) {
+  html:has(.memorial-page), body:has(.memorial-page) {
+    height:100%; overflow:hidden; overscroll-behavior:none;
+  }
+  .memorial-page {
+    height:100dvh; min-height:0; overflow:hidden;
+  }
+  .memorial-world-3d {
+    display:grid; grid-template-rows:minmax(0,1fr) auto;
+    height:100%; min-height:0; padding:0; overflow:hidden;
+  }
+  .memorial-world-3d .webgl-memorial,
+  .memorial-world-3d > .webgl-fallback {
+    position:relative; inset:auto; grid-row:1; grid-column:1;
+    width:100%; height:100%; min-height:0; overflow:hidden;
+  }
+  .memorial-world-3d .world-stage-spacer { display:none; }
+  .memorial-world-3d .ritual-panel {
+    position:relative; inset:auto; grid-row:2; grid-column:1;
+    width:100%; min-width:0;
+  }
+}
+
+@media (width < 1280px) {
+  .memorial-page {
+    position:fixed; top:var(--memorial-viewport-top,0px); left:0; right:0;
+    height:var(--memorial-viewport-height,100dvh);
+    min-height:0; overflow:hidden;
+  }
+  .memorial-page .memorial-world-3d {
+    height:100%; min-height:0;
+    grid-template-rows:minmax(0,1fr) max-content;
+  }
+  .memorial-world-3d .ritual-panel { align-self:end; flex-shrink:0; }
+}
+
+/* Enter the memorial immediately, without the site's smooth page scrolling. */
+html:has(.memorial-page) { scroll-behavior:auto; }
