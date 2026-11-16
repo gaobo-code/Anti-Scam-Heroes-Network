@@ -8,7 +8,7 @@ import { offerFlower, type FlowerBed } from "./flower-bed";
 
 const Memorial3D = dynamic(() => import("./memorial-3d"), { ssr: false, loading: () => <div className="webgl-fallback">正在构建三维纪念园…</div> });
 
-type RitualState = "idle" | "approach" | "bow" | "place" | "complete";
+type RitualState = "idle" | "approach" | "tribute" | "bow" | "place" | "complete";
 
 export default function MemorialExperience() {
   const [selected, setSelected] = useState<FlowerId>("chrysanthemum");
@@ -19,6 +19,9 @@ export default function MemorialExperience() {
   const [musicOn, setMusicOn] = useState(true);
   const [tribute, setTribute] = useState("");
   const [ceremonyTribute, setCeremonyTribute] = useState("");
+  const [visibleTribute, setVisibleTribute] = useState("");
+  const ritualTimers = useRef<number[]>([]);
+  useEffect(() => () => { ritualTimers.current.forEach(window.clearTimeout); }, []);
   const tributeDialog = useRef<HTMLDialogElement>(null);
   const stopMusic = useRef<(() => void) | null>(null);
 
@@ -91,25 +94,37 @@ export default function MemorialExperience() {
 
   function beginRitual() {
     if (!loaded || ritual !== "idle" || !tribute.trim()) return;
-    setCeremonyTribute(tribute.trim());
+    const text = tribute.trim();
+    const characters = Array.from(text);
+    setCeremonyTribute(text);
+    setVisibleTribute("");
     setTribute("");
     setRitual("approach");
-    window.setTimeout(() => setRitual("bow"), 5000);
-    window.setTimeout(() => setRitual("place"), 6800);
-    window.setTimeout(() => {
+    ritualTimers.current.forEach(window.clearTimeout);
+    const schedule = (callback: () => void, delay: number) => {
+      ritualTimers.current.push(window.setTimeout(callback, delay));
+    };
+    // Reach the memorial, express the tribute, then bow and offer flowers.
+    schedule(() => setRitual("tribute"), 5000);
+    characters.forEach((_, index) => {
+      schedule(() => setVisibleTribute(characters.slice(0, index + 1).join("")), 5000 + (index + 1) * 250);
+    });
+    const bowAt = 5000 + characters.length * 250 + 1200;
+    schedule(() => setRitual("bow"), bowAt);
+    schedule(() => setRitual("place"), bowAt + 1800);
+    schedule(() => {
       setBed((current) => offerFlower(current, selected));
       setRitual("complete");
-    }, 8100);
-    window.setTimeout(() => setRitual("idle"), 12300);
+    }, bowAt + 3100);
+    schedule(() => setRitual("idle"), bowAt + 7300);
   }
-
-  const ritualText = { idle: "选择鲜花，开始祭奠", approach: "缓步上前……", bow: "静默鞠躬……", place: "敬献鲜花……", complete: "祭奠完成 · 愿英雄安息" }[ritual];
+  const ritualText = { idle: "选择鲜花，开始祭奠", approach: "缓步上前……", tribute: "悼词播放中……", bow: "静默鞠躬……", place: "敬献鲜花……", complete: "祭奠完成 · 愿英雄安息" }[ritual];
 
   return <section className={`memorial-world memorial-world-3d ritual-${ritual}`}>
     <Memorial3D ritual={ritual} selected={selected} offerings={offerings} nextSlot={nextSlot} revision={revision} />
     <header className="world-heading"><h1>山河为证，英名长存</h1></header>
     <button className={`music-toggle ${musicOn ? "playing" : ""}`} type="button" onClick={toggleMusic} aria-label={musicOn ? "关闭音乐" : "开启音乐"} aria-pressed={musicOn}><span className="music-bars" aria-hidden="true"><i /><i /><i /></span><span className="music-label-desktop">{musicOn ? "关闭音乐" : "开启音乐"}</span><span className="music-label-mobile"><svg className="music-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z" />{musicOn ? <><path d="M15 8a6 6 0 0 1 0 8" /><path d="M18 5a10 10 0 0 1 0 14" /></> : <path d="m16 9 5 6m0-6-5 6" />}</svg>{musicOn ? "音乐" : "静音"}</span></button>
-    {ritual !== "idle" && <blockquote className="ceremony-tribute" aria-live="polite"><span>寄托哀思</span><p>{ceremonyTribute}</p></blockquote>}
+    {(ritual === "tribute" || ritual === "bow" || ritual === "place") && <blockquote className="ceremony-tribute" aria-label={ceremonyTribute}><p aria-hidden="true">{visibleTribute || "\u00a0"}</p></blockquote>}
     <div className="world-stage-spacer" aria-label={`徽剑三维山水纪念园，碑前已有 ${offerings.length} 束鲜花`} />
     <aside className="ritual-panel" aria-label="献花祭奠">
     <div className="ritual-status" role="status" aria-live="polite"><span>{ritual === "complete" ? "✓" : "·"}</span>{ritualText}</div>
@@ -132,6 +147,11 @@ export default function MemorialExperience() {
     </dialog>
   </section>;
 }
+
+
+
+
+
 
 
 

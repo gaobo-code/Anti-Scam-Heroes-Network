@@ -365,3 +365,18 @@ html:has(.memorial-page) { scroll-behavior:auto; }
  .tribute-editor textarea { padding:13px 14px; line-height:1.9; }
  .tribute-done { margin-top:24px; padding:13px; }
 }
+/* Present the tribute as a caption below the ceremony scene. */
+.ceremony-tribute {
+ top:auto; bottom:14%; left:50%; transform:translateX(-50%);
+ width:min(600px,calc(100% - 64px)); padding:14px 22px;
+}
+.ceremony-tribute p { margin:0; }
+@media (width < 1280px) {
+ .ceremony-tribute {
+  position:relative; grid-row:1; grid-column:1;
+  align-self:end; justify-self:center;
+  inset:auto; transform:none; margin:0 0 24px;
+  width:calc(100% - 32px); max-width:600px;
+  max-height:40%; padding:12px 16px;
+ }
+}
