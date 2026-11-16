@@ -17,6 +17,9 @@ export default function MemorialExperience() {
   const [loaded, setLoaded] = useState(false);
   const [ritual, setRitual] = useState<RitualState>("idle");
   const [musicOn, setMusicOn] = useState(true);
+  const [tribute, setTribute] = useState("");
+  const [ceremonyTribute, setCeremonyTribute] = useState("");
+  const tributeDialog = useRef<HTMLDialogElement>(null);
   const stopMusic = useRef<(() => void) | null>(null);
 
   useLayoutEffect(() => {
@@ -87,7 +90,9 @@ export default function MemorialExperience() {
   }
 
   function beginRitual() {
-    if (!loaded || ritual !== "idle") return;
+    if (!loaded || ritual !== "idle" || !tribute.trim()) return;
+    setCeremonyTribute(tribute.trim());
+    setTribute("");
     setRitual("approach");
     window.setTimeout(() => setRitual("bow"), 5000);
     window.setTimeout(() => setRitual("place"), 6800);
@@ -104,13 +109,30 @@ export default function MemorialExperience() {
     <Memorial3D ritual={ritual} selected={selected} offerings={offerings} nextSlot={nextSlot} revision={revision} />
     <header className="world-heading"><h1>山河为证，英名长存</h1></header>
     <button className={`music-toggle ${musicOn ? "playing" : ""}`} type="button" onClick={toggleMusic} aria-label={musicOn ? "关闭音乐" : "开启音乐"} aria-pressed={musicOn}><span className="music-bars" aria-hidden="true"><i /><i /><i /></span><span className="music-label-desktop">{musicOn ? "关闭音乐" : "开启音乐"}</span><span className="music-label-mobile"><svg className="music-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z" />{musicOn ? <><path d="M15 8a6 6 0 0 1 0 8" /><path d="M18 5a10 10 0 0 1 0 14" /></> : <path d="m16 9 5 6m0-6-5 6" />}</svg>{musicOn ? "音乐" : "静音"}</span></button>
+    {ritual !== "idle" && <blockquote className="ceremony-tribute" aria-live="polite"><span>寄托哀思</span><p>{ceremonyTribute}</p></blockquote>}
     <div className="world-stage-spacer" aria-label={`徽剑三维山水纪念园，碑前已有 ${offerings.length} 束鲜花`} />
     <aside className="ritual-panel" aria-label="献花祭奠">
     <div className="ritual-status" role="status" aria-live="polite"><span>{ritual === "complete" ? "✓" : "·"}</span>{ritualText}</div>
     <div className="world-controls">
       <div className="world-flower-options" role="radiogroup" aria-label="选择祭奠鲜花">{flowers.map((item) => <button key={item.id} type="button" role="radio" aria-checked={selected === item.id} className={selected === item.id ? "selected" : ""} onClick={() => setSelected(item.id)} disabled={ritual !== "idle" && ritual !== "complete"}><span className={`world-flower-icon flower-${item.id}`} style={{ color: `#${item.color.toString(16).padStart(6, "0")}` }}>{item.icon}</span><span><strong>{item.name}</strong><small>{item.meaning}</small></span></button>)}</div>
-      <button className="ceremony-button" type="button" onClick={beginRitual} disabled={!loaded || ritual !== "idle"}><strong>{ritual === "idle" ? "开始祭奠" : ritual === "complete" ? "祭奠完成" : "仪式进行中"}</strong></button>
+      <button className="ceremony-button" type="button" onClick={() => { const dialog = tributeDialog.current; if (!dialog) return; dialog.showModal(); dialog.focus({ preventScroll: true }); }} disabled={!loaded || ritual !== "idle"}><strong>{ritual === "idle" ? "开始祭奠" : ritual === "complete" ? "祭奠完成" : "仪式进行中"}</strong></button>
     </div>
     </aside>
+    <dialog className="tribute-dialog" ref={tributeDialog} aria-labelledby="tribute-title" tabIndex={-1}>
+      <form className="tribute-editor" onSubmit={(event) => { event.preventDefault(); if (!tribute.trim()) return; tributeDialog.current?.close(); beginRitual(); }}>
+        <button className="tribute-close" type="button" onClick={() => tributeDialog.current?.close()} aria-label="关闭悼词窗口">×</button><div className="tribute-ornament" aria-hidden="true">✧</div><p className="tribute-eyebrow">一笺追思 · 寄予山河</p><h2 id="tribute-title">写下悼词</h2><p className="tribute-subtitle tribute-desktop-detail">把未尽的话，轻轻留在这里。</p>
+        <label className="tribute-input" htmlFor="memorial-tribute">
+          <span className="tribute-input-heading"><span>谨以此言，致敬英雄</span><small>{tribute.length}/40</small></span>
+          
+          <textarea id="memorial-tribute" aria-label="悼词（40字以内）" value={tribute} onChange={(event) => setTribute(event.target.value)} maxLength={40} required rows={3} placeholder="英名长存，山河铭记。" />
+          <small className="tribute-desktop-detail">{tribute.length}/40 · 祭奠时将展示悼词</small>
+        </label>
+        <button className="tribute-done" type="submit" disabled={!tribute.trim() || !loaded || ritual !== "idle"}>献花祭奠 <span aria-hidden="true">→</span></button>
+      </form>
+    </dialog>
   </section>;
 }
+
+
+
+
