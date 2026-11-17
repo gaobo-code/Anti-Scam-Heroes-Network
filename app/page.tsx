@@ -1,35 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
+import "./home.css";
 
 export default function Home() {
   return (
-    <main className="home-page">
-      <nav className="site-nav" aria-label="主导航">
-        <Link className="brand" href="/"><span className="brand-mark">徽</span><span>无诈英雄纪念网</span></Link>
-        <span className="nav-note">让勇气被看见，让正义被记住</span>
-      </nav>
-      <section className="home-hero">
-        <div className="hero-copy">
-          <p className="eyebrow">致敬民间反诈英雄</p>
-          <h1>有人曾独自<br />站在黑暗对面</h1>
-          <p className="hero-intro">记录那些为揭露诈骗、守护普通人而付出的人。这里保存他们的名字，也保存我们不愿遗忘的勇气。</p>
-          <div className="hero-actions"><Link className="primary-button" href="/heroes/huijian">走近徽剑 <span aria-hidden="true">→</span></Link><a className="text-link" href="#heroes">查看英雄名录</a></div>
+    <main className="landing">
+      <header className="landing-header">
+        <Link className="landing-brand" href="/" aria-label="反诈英雄网首页"><span className="landing-logo"><Image src="/brand-light.png" alt="" width={34} height={34} /></span><span>反诈英雄网<small>COURAGE, REMEMBERED.</small></span></Link>
+        <nav className="landing-nav" aria-label="主导航"><a href="#purpose">关于我们</a><Link href="/heroes/huijian">阅读故事 <span aria-hidden="true">↗</span></Link></nav>
+      </header>
+      <section className="landing-hero" aria-labelledby="landing-title">
+        <div className="landing-label"><span><i /> 纪念与电诈恶势力抗争的英雄</span><span>铭记牺牲 / 守护正义</span></div>
+        <div className="landing-composition">
+          <div className="landing-copy"><p className="landing-eyebrow">他们为揭露罪恶而战，我们为铭记英雄而来。</p><h1 id="landing-title">不忘记<span className="landing-title-line">每位<span className="landing-highlight">英雄<span className="landing-period">.</span></span></span></h1><p className="landing-description">他们揭露电诈、直面暴力，为受害者发声。<br />有人因此付出生命。我们不能让他们被遗忘。</p><a className="landing-about-link" href="#purpose">这份纪念，从这里开始 <span aria-hidden="true">↓</span></a></div>
+          <aside className="landing-feature" aria-labelledby="featured-name">
+            <div className="landing-card-top"><span>铭记英雄 / 001</span><span className="landing-card-star" aria-hidden="true">✳</span></div>
+            <div className="landing-person"><div className="landing-avatar"><Image src="/wukai.png" alt="徽剑（吴恺）的照片" fill sizes="128px" preload /></div><div><p>民间反诈人士</p><h2 id="featured-name">徽剑</h2><span>吴恺 / WU KAI</span></div></div>
+            <p className="landing-card-text">他揭露缅北、柬埔寨电诈园区的罪恶，<br />因触动犯罪集团利益，遭报复杀害。<br />他叫吴恺，人们记住他的名字：徽剑。</p>
+            <Link className="landing-read" href="/heroes/huijian"><span>走近徽剑<small>阅读他的故事</small></span><span className="landing-arrow" aria-hidden="true">↗</span></Link>
+          </aside>
         </div>
-        <Link className="portrait-feature" href="/heroes/huijian" aria-label="查看徽剑的生平">
-          <div className="portrait-frame"><Image src="/wukai.png" alt="反诈人士徽剑（吴恺）的照片" fill sizes="(max-width: 800px) 88vw, 42vw" className="portrait-image" preload /></div>
-          <div className="portrait-caption"><div><span className="caption-kicker">本期纪念人物</span><strong>徽剑 · 吴恺</strong></div><span className="round-arrow" aria-hidden="true">↗</span></div>
-        </Link>
+        <div className="landing-hero-foot"><span>THE COURAGE TO STAND UP.</span><span>献给每一位，与罪恶抗争的人。</span><a href="#purpose">向下探索 <span aria-hidden="true">↘</span></a></div>
       </section>
-      <section className="manifesto" aria-label="网站宗旨"><p className="manifesto-number">01</p><p>他们的选择，让更多人看见骗局背后的真相。</p><span className="manifesto-line" /><p>我们的记住，让孤勇不再沉入无声的时间。</p></section>
-      <section className="heroes-section" id="heroes">
-        <div className="section-heading"><div><p className="eyebrow">英雄名录</p><h2>记住，一个真实的人</h2></div><p>首位收录人物 · 持续整理中</p></div>
-        <Link className="hero-record" href="/heroes/huijian">
-          <div className="record-index">001</div><div className="record-photo"><Image src="/wukai.png" alt="徽剑（吴恺）" fill sizes="180px" className="portrait-image" /></div>
-          <div className="record-copy"><p>民间反诈人士</p><h3>徽剑 <span>／ 吴恺</span></h3><p className="record-summary">以一己之力追查境外电诈线索，持续公开揭露黑产内幕。</p></div>
-          <div className="record-years"><span>生于安徽安庆</span><strong>— 2024</strong></div><span className="record-cta">阅读生平 <span aria-hidden="true">→</span></span>
-        </Link>
-      </section>
-      <footer><span>无诈英雄纪念网</span><p>谨以此站，纪念每一位照亮黑暗的人。</p><span>始于 2026</span></footer>
+      <div className="landing-ribbon" aria-hidden="true"><span>铭记英雄</span><i>✳</i><span>REMEMBER THE BRAVE</span><i>✳</i><span>不忘牺牲，守护正义</span><i>✳</i><span>铭记英雄</span></div>
+      <section className="landing-purpose" id="purpose" aria-labelledby="purpose-title"><div className="landing-purpose-label">OUR PURPOSE<span>关于这份纪念</span></div><div className="landing-purpose-body"><h2 id="purpose-title">揭露罪恶的人，<br />不该付出<span>生命的代价。</span></h2><div className="landing-purpose-details"><p>缅北、柬埔寨电诈园区背后的犯罪势力，以诈骗掠夺财产，以拘禁、虐待和暴力迫害无辜的人。面对这些罪恶，有人选择揭露，有人坚持抗争。</p><p>反诈英雄网为纪念这些英雄而建。徽剑因揭露电诈犯罪遭报复杀害，他的经历提醒我们：不能忘记受害者的苦难，也不能忘记为守护他人而牺牲的人。记录他们的故事，是对英雄的致敬，也是对罪恶永不妥协的态度。</p></div><Link href="/heroes/huijian" className="landing-dedicate">从徽剑的故事开始 <span aria-hidden="true">↗</span></Link></div></section>
+      <footer className="landing-footer"><Link href="/" className="landing-footer-brand"><Image src="/brand-light.png" alt="" width={26} height={26} />反诈英雄网</Link><p>纪念与电诈恶势力抗争、为守护人民而付出的英雄。</p><span>始于 2026</span></footer>
     </main>
   );
 }
