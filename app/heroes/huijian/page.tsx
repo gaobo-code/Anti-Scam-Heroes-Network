@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import FriendlyLinks from "../../friendly-links";
 import "../../home.css";
 import "./story.css";
 
@@ -17,7 +18,10 @@ export default function HuijianPage() {
     <main className="landing biography">
       <header className="landing-header">
         <Link className="landing-brand" href="/" aria-label="反诈英雄网首页"><span className="landing-logo"><Image src="/brand-light.png" alt="" width={34} height={34} /></span><span>反诈英雄网<small>COURAGE, REMEMBERED.</small></span></Link>
-        <nav className="landing-nav" aria-label="主导航"><Link href="/">返回首页</Link><a href="#life">生平纪事 <span aria-hidden="true">↘</span></a></nav>
+        <nav className="landing-nav" aria-label="主导航">
+          <FriendlyLinks />
+          <Link href="/">返回首页</Link>
+        </nav>
       </header>
       <div className="bio-container">
         <div className="bio-breadcrumb"><Link href="/">首页</Link><span aria-hidden="true">/</span><span>铭记英雄 · 001</span></div>
