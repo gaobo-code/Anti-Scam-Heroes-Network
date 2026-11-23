@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import SiteFooter from "../../site-footer";
 import SiteHeader from "../../site-header";
 import "../../home.css";
 import "./story.css";
@@ -42,7 +43,7 @@ export default function HuijianPage() {
         <section className="bio-chapter bio-legacy" aria-labelledby="legacy-title"><div className="bio-section-label"><span>03 / 铭记</span><h2 id="legacy-title">勇气的回响</h2></div><div className="bio-prose"><h3>揭露罪恶的人，<br />不该付出<span>生命的代价。</span></h3><p>徽剑的故事提醒我们：诈骗从来不只是屏幕另一端的数字，而是一条侵害信任、自由与生命的黑色链条。记住他，是不忘受害者的苦难，也不忘为守护他人而牺牲的人。</p></div></section>
         <section className="bio-accountability" aria-labelledby="accountability-title"><div className="bio-accountability-label"><span>04 / 追责</span><span aria-hidden="true">↗</span></div><h2 id="accountability-title">记住英雄，<br />也要让罪恶<span>付出代价。</span></h2><div className="bio-accountability-bottom"><p>揭露迫害与暴行，追问犯罪者的责任。<br />让伤害无辜者的人，受到法律的惩处。</p><Link href="/criminals">查看罪犯页面 <span aria-hidden="true">↗</span></Link></div></section>
       </div>
-      <footer className="landing-footer"><Link href="/" className="landing-footer-brand"><Image src="/brand-light.png" alt="" width={26} height={26} />反诈英雄网</Link><p>纪念与电诈恶势力抗争、为守护人民而付出的英雄。</p><span>铭记英雄 · 001</span></footer>
+      <SiteFooter action={{ href: "/", label: "返回首页" }} />
     </main>
   );
 }

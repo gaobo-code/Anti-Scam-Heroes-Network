@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import SiteFooter from "../../../../site-footer";
 import SiteHeader from "../../../../site-header";
 import HistoryRecords from "./history-records";
 import "./history.css";
@@ -37,6 +38,7 @@ export default function MemorialHistoryPage() {
 
         <HistoryRecords />
       </div>
+      <SiteFooter action={{ href: "/heroes/huijian", label: "返回徽剑生平" }} />
     </main>
   );
 }

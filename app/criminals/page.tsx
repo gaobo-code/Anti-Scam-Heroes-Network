@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import SiteFooter from "../site-footer";
 import SiteHeader from "../site-header";
 import type { CSSProperties, ReactNode } from "react";
 import SupportButton from "./support-button";
@@ -164,10 +164,7 @@ export default function CriminalsPage() {
         </div>
       </main>
 
-      <footer className="criminals-container criminals-footer">
-        <Link href="/">反诈英雄网</Link>
-        <Link href="/heroes/huijian">返回徽剑故事</Link>
-      </footer>
+      <SiteFooter action={{ href: "/heroes/huijian", label: "返回徽剑生平" }} />
     </div>
   );
 }

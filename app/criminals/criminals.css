@@ -114,10 +114,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-.criminals-footer a:hover {
-  color: var(--case-accent);
-}
-
 .criminals-cases {
   display: grid;
   gap: clamp(20px, 3vw, 34px);
@@ -509,15 +505,6 @@
 
 .criminals-sentence {
   font-weight: 650;
-}
-
-.criminals-footer {
-  gap: 16px;
-  min-height: 84px;
-  border-top: 1px solid var(--case-line);
-  color: var(--case-muted);
-  font-size: .875rem;
-  letter-spacing: 0;
 }
 
 @media (max-width: 720px) {
