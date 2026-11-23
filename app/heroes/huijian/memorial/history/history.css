@@ -18,10 +18,15 @@
 .history-content {
   width: min(1120px, calc(100% - 64px));
   margin-inline: auto;
+  padding: 10px 0 56px;
 }
 
-.history-content {
-  padding: 10px 0 56px;
+@media (min-width: 768px) {
+  .history-content {
+    width: 100%;
+    max-width: 1440px;
+    padding-inline: 5%;
+  }
 }
 
 .history-hero {
@@ -53,14 +58,14 @@
 }
 
 .history-hero-copy {
-  padding: clamp(36px, 5.4vw, 61px);
+  padding: clamp(24px, 3vw, 38px) clamp(36px, 5.4vw, 61px);
 }
 
 .history-eyebrow {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 0 0 14px;
+  margin: 0 0 8px;
   color: var(--accent);
   font-size: 14px;
   font-weight: 600;
@@ -77,20 +82,15 @@
 .history-hero h1 {
   margin: 0;
   font-family: "Songti SC", STSong, SimSun, serif;
-  font-size: clamp(42px, 5.6vw, 68px);
+  font-size: clamp(34px, 4.5vw, 54px);
   font-weight: 700;
   line-height: 1.18;
   letter-spacing: .05em;
 }
 
-.history-intro {
-  margin: 16px 0 24px;
-  color: #d7dfd4;
-  font-size: 15px;
-}
-
 .history-offer {
   display: inline-flex;
+  margin-top: 14px;
   min-height: 46px;
   align-items: center;
   gap: 22px;
@@ -182,7 +182,7 @@
 }
 
 .history-table th.history-date-column {
-  width: clamp(118px, 14vw, 170px);
+  width: clamp(160px, 17vw, 195px);
 }
 
 .history-table th.history-flower-column {
@@ -210,8 +210,7 @@
 }
 
 .history-date span {
-  display: block;
-  margin-top: 2px;
+  margin-inline-start: 4px;
   color: var(--muted);
   font-size: 12px;
 }
@@ -314,6 +313,15 @@
 }
 
 @media (max-width: 767px), (hover: none) and (pointer: coarse) {
+  .history-table th.history-date-column {
+    width: clamp(118px, 14vw, 170px);
+  }
+
+  .history-date span {
+    display: block;
+    margin: 2px 0 0;
+  }
+
   .history-pagination,
   .history-flower-column {
     display: none;
@@ -327,7 +335,7 @@
 @media (max-width: 600px) {
   .history-content {
     width: calc(100% - 32px);
-    padding: 4px 0 35px;
+    padding-bottom: 35px;
   }
 
   .history-hero {
@@ -347,7 +355,7 @@
   }
 
   .history-hero-copy {
-    padding: 30px 23px;
+    padding: 20px 23px;
   }
 
   .history-records {

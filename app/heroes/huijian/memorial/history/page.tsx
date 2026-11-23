@@ -22,14 +22,13 @@ export default function MemorialHistoryPage() {
               src="/memorial-landscape.png"
               alt=""
               fill
-              sizes="(max-width: 600px) 100vw, (max-width: 1250px) 70vw, 850px"
+              sizes="(max-width: 600px) 100vw, (max-width: 1440px) 67vw, 960px"
               preload
             />
           </div>
           <div className="history-hero-copy">
-            <p className="history-eyebrow">徽剑 · 吴恺</p>
+            <p className="history-eyebrow">纪念吴恺 · 徽剑</p>
             <h1 id="history-title">祭奠历史</h1>
-            <p className="history-intro">纪念曾为电诈受害者发声的徽剑。</p>
             <Link className="history-offer" href="/heroes/huijian/memorial">
               前往献花 <span aria-hidden="true">↗</span>
             </Link>

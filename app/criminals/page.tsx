@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "../site-header";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import SupportButton from "./support-button";
 import { verdictGroups } from "./verdicts";
 import "./criminals.css";
 
 export const metadata: Metadata = {
   title: "徽剑案罪犯名单与判刑主张",
-  description: "按四组展示徽剑（吴恺）遇害案相关人员、判刑主张及实际裁判结果。",
+  description: "按四组展示吴恺（徽剑）遇害案相关人员、判刑主张及实际裁判结果。",
 };
 
 const caseReport = "https://www.jiemian.com/article/15242658.html";
@@ -19,10 +19,10 @@ const rumorReport = "https://www.sina.cn/news/detail/5358597815141061.html";
 const convictedCount = verdictGroups.reduce((total, group) => total + group.people.length, 0);
 
 const cases = {
-  liu: { id: "liu-ren", label: "罪犯一", title: "刘忍", status: "本案指使关系未认定", initialSupport: 2864 },
-  major: { id: "major", label: "罪犯二", title: "代号“少校”", status: "截至二审未归案", initialSupport: 2417 },
-  zhao: { id: "zhao-bing", label: "罪犯三", title: "赵冰及其他获刑人员", status: null, initialSupport: 3296 },
-  rumor: { id: "rumor", label: "罪犯四", title: "转账截图传播者", status: "身份未明", initialSupport: 1782 },
+  liu: { id: "liu-ren", label: "罪犯一", title: "刘忍", statuses: ["徽剑曝光对象"], initialSupport: 2864 },
+  major: { id: "major", label: "罪犯二", title: "代号“少校”", statuses: ["策划者", "未归案"], initialSupport: 2417 },
+  zhao: { id: "zhao-bing", label: "罪犯三", title: "赵冰及其他获刑人员", statuses: ["实际执行者"], initialSupport: 3296 },
+  rumor: { id: "rumor", label: "罪犯四", title: "转账截图传播者", statuses: ["栽赃者", "身份未明"], initialSupport: 1782 },
 };
 
 type CaseSectionProps = (typeof cases)[keyof typeof cases] & {
@@ -31,12 +31,23 @@ type CaseSectionProps = (typeof cases)[keyof typeof cases] & {
   records?: ReactNode;
 };
 
-function CaseSection({ id, label, title, status, initialSupport, proposal, children, records }: CaseSectionProps) {
+function CaseSection({ id, label, title, statuses, initialSupport, proposal, children, records }: CaseSectionProps) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="criminals-card">
       <header className="criminals-card-heading">
-        <h2 id={`${id}-title`}><span>{label}</span>{title}</h2>
-        {status && <span className="criminals-status">{status}</span>}
+        <h2 id={`${id}-title`}>
+          <span className="criminals-card-label">{label}</span>
+          <span className="criminals-card-title">{title}</span>
+        </h2>
+        {statuses.length > 0 && (
+          <div className="criminals-statuses">
+            {statuses.map((status, index) => (
+              <span key={status} className="criminals-status" style={{ "--status-order": statuses.length - index } as CSSProperties}>
+                {status}
+              </span>
+            ))}
+          </div>
+        )}
       </header>
       <div className="criminals-case-grid">
         <div className="criminals-case-details">{children}</div>
@@ -101,7 +112,7 @@ export default function CriminalsPage() {
       <main className="criminals-container">
         <section className="criminals-hero" aria-labelledby="case-title">
           <div className="criminals-hero-content">
-            <p className="criminals-eyebrow">徽剑（吴恺）遇害案</p>
+            <p className="criminals-eyebrow">吴恺（徽剑）遇害案</p>
             <h1 id="case-title">罪犯<span>名单</span></h1>
           </div>
         </section>

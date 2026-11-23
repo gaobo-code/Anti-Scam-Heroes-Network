@@ -25,6 +25,12 @@
   margin-inline: auto;
 }
 
+@media (min-width: 768px) {
+  .criminals-container {
+    width: calc(min(100%, 1440px) - 10%);
+  }
+}
+
 .criminals-page :is(a, button):focus-visible {
   outline: 2px solid var(--case-accent);
   outline-offset: 4px;
@@ -93,6 +99,12 @@
   font-weight: 850;
   letter-spacing: -.04em;
   line-height: 1.08;
+}
+
+@media (min-width: 768px) {
+  .criminals-hero h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+  }
 }
 
 .criminals-hero h1 span {
@@ -202,12 +214,18 @@
   line-height: 1.3;
 }
 
-.criminals-card-heading h2 span {
+.criminals-card-label {
   display: block;
   margin-bottom: 7px;
   color: #f3b39d;
   font-size: .9375rem;
   letter-spacing: .1em;
+}
+
+.criminals-statuses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .criminals-status {
@@ -230,6 +248,63 @@
   border-radius: 50%;
   background: #ffbd9e;
   content: "";
+}
+
+@media (min-width: 768px) {
+  .criminals-card-heading {
+    align-items: flex-start;
+  }
+}
+
+@media (width < 768px) {
+  .criminals-card-heading {
+    display: grid;
+    grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+    gap: 7px 10px;
+  }
+
+  .criminals-card-heading h2 {
+    display: grid;
+    grid-template: subgrid / subgrid;
+    grid-area: 1 / 1 / 3 / -1;
+    align-self: stretch;
+    align-items: center;
+  }
+
+  .criminals-card-label {
+    grid-area: 1 / 1 / 2 / -1;
+    margin-bottom: 0;
+  }
+
+  .criminals-card-title {
+    grid-area: 2 / 1;
+    overflow-wrap: anywhere;
+  }
+
+  .criminals-statuses {
+    grid-area: 2 / 2;
+    flex-direction: row-reverse;
+    align-content: flex-start;
+    column-gap: 6px;
+    row-gap: 0;
+    block-size: 2rem;
+    overflow: hidden;
+  }
+
+  /* Keep an empty first row if the highest-priority label is too wide. */
+  .criminals-statuses::before {
+    content: "";
+    flex: 0 0 0;
+    block-size: 2rem;
+    margin-inline-end: -6px;
+  }
+
+  .criminals-status {
+    order: var(--status-order);
+    flex: none;
+    block-size: 2rem;
+    white-space: nowrap;
+  }
 }
 
 .criminals-case-grid {

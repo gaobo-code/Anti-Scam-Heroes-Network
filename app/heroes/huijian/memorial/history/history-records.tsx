@@ -77,8 +77,8 @@ export default function HistoryRecords() {
           <thead>
             <tr>
               <th className="history-date-column" scope="col" aria-sort="descending">日期</th>
-              <th scope="col">悼词</th>
               <th className="history-flower-column" scope="col">鲜花</th>
+              <th scope="col">悼词</th>
             </tr>
           </thead>
           <tbody>
@@ -90,11 +90,10 @@ export default function HistoryRecords() {
                 <tr key={record.dateTime}>
                   <td className="history-date-column">
                     <time className="history-date" dateTime={record.dateTime}>
-                      {dateFormat.format(date)}
+                      {dateFormat.format(date)}{" "}
                       <span>{timeFormat.format(date)}</span>
                     </time>
                   </td>
-                  <td className="history-tribute">{record.tribute}</td>
                   <td className="history-flower-column">
                     {flower && (
                       <span className="history-flower">
@@ -103,6 +102,7 @@ export default function HistoryRecords() {
                       </span>
                     )}
                   </td>
+                  <td className="history-tribute">{record.tribute}</td>
                 </tr>
               );
             })}
