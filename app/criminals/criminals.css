@@ -1,0 +1,495 @@
+.criminals-page {
+  --case-bg: #121317;
+  --case-panel: #1b1c22;
+  --case-line: #36343d;
+  --case-text: #fbf3ec;
+  --case-muted: #c4bbc0;
+  --case-accent: #ffbe9f;
+  --case-gutter: clamp(16px, 5vw, 72px);
+  min-height: 100svh;
+  background: radial-gradient(ellipse at 85% 4%, #292127, transparent 650px), var(--case-bg);
+  color: var(--case-text);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.criminals-page .site-header-action {
+  --header-accent: var(--case-accent);
+  --header-action-border: color-mix(in srgb, var(--case-accent) 32%, transparent);
+  --header-action-bg: color-mix(in srgb, var(--case-accent) 7%, transparent);
+  --header-action-hover-bg: color-mix(in srgb, var(--case-accent) 14%, transparent);
+}
+
+.criminals-container {
+  width: min(1160px, calc(100% - 2 * var(--case-gutter)));
+  margin-inline: auto;
+}
+
+.criminals-page :is(a, button):focus-visible {
+  outline: 2px solid var(--case-accent);
+  outline-offset: 4px;
+}
+
+.criminals-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-block: clamp(18px, 3.2vw, 38px) clamp(24px, 3.75vw, 46px);
+  padding: clamp(32px, 6vw, 76px) clamp(20px, 5.8vw, 74px);
+  border: 1px solid #49383f;
+  border-radius: clamp(18px, 2.7vw, 32px);
+  background:
+    radial-gradient(ellipse at 98% 120%, #8b5346 0%, #462a31 42%, transparent 75%),
+    linear-gradient(115deg, #26252d, #1b1920 60%);
+}
+
+.criminals-hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: repeating-linear-gradient(135deg, transparent 0 21px, #ffe6db13 21px 22px);
+  mask-image: linear-gradient(90deg, transparent 45%, #000);
+  content: "";
+}
+
+.criminals-hero::after {
+  position: absolute;
+  top: 53%;
+  right: -12%;
+  z-index: -1;
+  width: 59%;
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border: 1px solid #ffd7bd54;
+  border-radius: 50%;
+  box-shadow: 0 0 0 32px #ffd7bd10, 0 0 0 64px #ffd7bd0c, 0 0 0 96px #ffd7bd07;
+  content: "";
+}
+
+.criminals-hero-content {
+  max-width: 40rem;
+}
+
+.criminals-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--case-accent);
+  font-size: .9375rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.criminals-eyebrow::before {
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.criminals-hero h1 {
+  margin-block: 14px 18px;
+  font-size: clamp(3rem, 8.1vw, 6.75rem);
+  font-weight: 850;
+  letter-spacing: -.04em;
+  line-height: 1.08;
+}
+
+.criminals-hero h1 span {
+  color: var(--case-accent);
+  background: linear-gradient(120deg, #ffe5c8 0%, #ffaf92 85%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.criminals-footer a:hover {
+  color: var(--case-accent);
+}
+
+.criminals-cases {
+  display: grid;
+  gap: clamp(20px, 3vw, 34px);
+  margin-bottom: clamp(42px, 6vw, 72px);
+}
+
+.criminals-card {
+  min-width: 0;
+  padding: clamp(16px, 3.5vw, 42px);
+  scroll-margin-top: 20px;
+  border: 1px solid var(--case-line);
+  border-radius: clamp(18px, 2.25vw, 28px);
+  background: linear-gradient(150deg, #222129, var(--case-panel) 36%);
+  box-shadow: 0 18px 48px #0002;
+}
+
+.criminals-gallery {
+  display: grid;
+  border: 1px solid var(--case-line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.criminals-gallery a {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: #302932;
+  cursor: zoom-in;
+}
+
+.criminals-gallery a:focus-visible {
+  z-index: 1;
+  outline-offset: -4px;
+}
+
+.criminals-gallery img {
+  object-fit: cover;
+  object-position: center 36%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .criminals-gallery img {
+    transition: transform .26s ease;
+  }
+
+  .criminals-gallery a:hover img {
+    transform: scale(1.045);
+  }
+}
+
+.criminals-liu-gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: clamp(165px, 25vw, 310px);
+  gap: 2px;
+  background: #3e333b;
+}
+
+.criminals-liu-gallery a:last-child img {
+  object-position: 58% 32%;
+}
+
+.criminals-zhao-profile {
+  display: grid;
+  grid-template-columns: minmax(110px, 172px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(14px, 2.4vw, 26px);
+}
+
+.criminals-zhao-gallery {
+  aspect-ratio: 660 / 774;
+}
+
+.criminals-zhao-gallery img {
+  object-fit: contain;
+}
+
+.criminals-card-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin-bottom: clamp(16px, 2.4vw, 28px);
+  padding-bottom: clamp(16px, 2.3vw, 26px);
+  border-bottom: 1px solid var(--case-line);
+}
+
+.criminals-card-heading h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3.3vw, 2.75rem);
+  font-weight: 750;
+  letter-spacing: -.025em;
+  line-height: 1.3;
+}
+
+.criminals-card-heading h2 span {
+  display: block;
+  margin-bottom: 7px;
+  color: #f3b39d;
+  font-size: .9375rem;
+  letter-spacing: .1em;
+}
+
+.criminals-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 11px;
+  border: 1px solid #52434a;
+  border-radius: 999px;
+  background: #332830;
+  color: #e5ced1;
+  font-size: .8125rem;
+  font-weight: 650;
+}
+
+.criminals-status::before {
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: #ffbd9e;
+  content: "";
+}
+
+.criminals-case-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(265px, .46fr);
+  align-items: start;
+  gap: clamp(18px, 3.5vw, 42px) clamp(18px, 3vw, 34px);
+}
+
+.criminals-case-details {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.criminals-case-details p {
+  margin: 14px 0 0;
+  color: var(--case-muted);
+  line-height: 1.85;
+}
+
+.criminals-case-details p:first-child {
+  margin-top: 0;
+}
+
+.criminals-proposal {
+  grid-column: 2;
+  grid-row: 1;
+  padding: clamp(16px, 2.2vw, 25px);
+  border: 1px solid #75524e;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #3e2a30, #2c2329 78%);
+}
+
+.criminals-proposal h3 {
+  color: var(--case-accent);
+  font-size: .875rem;
+  font-weight: 650;
+  letter-spacing: .08em;
+}
+
+.criminals-proposal-text {
+  margin-block: 8px 18px;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.criminals-proposal-text p + p {
+  margin-top: 5px;
+  color: #f1d9d5;
+  font-size: .9375rem;
+  font-weight: 550;
+}
+
+.criminals-support {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 14px;
+  padding-top: 15px;
+  border-top: 1px solid #f3b9a334;
+}
+
+.criminals-support button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 94px;
+  min-height: 44px;
+  padding: 5px 13px;
+  border: 1px solid #ffd0b7;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #ffd0b0, #ffab90);
+  color: #231c1a;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.criminals-support button span {
+  width: 16px;
+  font-size: 1.0625rem;
+  text-align: center;
+}
+
+.criminals-support button[aria-pressed="true"] {
+  border-color: #a2756a;
+  background: #ffbe9f13;
+  color: var(--case-accent);
+}
+
+.criminals-support button:hover {
+  filter: brightness(1.12);
+}
+
+.criminals-support-count {
+  display: grid;
+  gap: 4px;
+  color: #e1cdd0;
+  font-size: .875rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.criminals-support-count strong {
+  color: var(--case-text);
+  font-size: clamp(1.375rem, 2.3vw, 1.75rem);
+  font-weight: 750;
+}
+
+.criminals-source {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--case-accent);
+  font-size: .875rem;
+  text-decoration: underline;
+  text-decoration-color: #aa7467;
+  text-underline-offset: 4px;
+}
+
+.criminals-source:hover {
+  text-decoration-color: currentColor;
+}
+
+.criminals-verdicts {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  padding-top: clamp(20px, 3vw, 30px);
+  border-top: 1px solid var(--case-line);
+}
+
+.criminals-verdicts h3 {
+  font-size: clamp(1.15rem, 2.15vw, 1.5rem);
+  font-weight: 750;
+}
+
+.criminals-verdicts p {
+  margin: 6px 0 14px;
+  color: var(--case-muted);
+  font-size: .875rem;
+}
+
+.criminals-table-frame {
+  overflow: hidden;
+  border: 1px solid var(--case-line);
+  border-radius: 14px;
+  background: #19191f;
+}
+
+.criminals-table {
+  width: 100%;
+  table-layout: fixed;
+  text-align: left;
+}
+
+.criminals-table :is(th, td) {
+  padding: 13px clamp(10px, 2.15vw, 26px);
+  border-bottom: 1px solid var(--case-line);
+  vertical-align: top;
+}
+
+.criminals-table thead th {
+  background: #25232b;
+  color: var(--case-muted);
+  font-size: .875rem;
+  font-weight: 650;
+}
+
+.criminals-table thead th:first-child {
+  width: 20%;
+}
+
+.criminals-table thead th:last-child {
+  width: 28%;
+}
+
+.criminals-table tbody:last-child tr:last-child > * {
+  border-bottom: 0;
+}
+
+.criminals-charge th {
+  color: var(--case-accent);
+  background: #342730;
+  font-weight: 700;
+}
+
+.criminals-charge span {
+  margin-left: 12px;
+  font-size: .875rem;
+  font-weight: 500;
+}
+
+.criminals-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 12px;
+  color: var(--case-muted);
+  font-size: .875rem;
+}
+
+.criminals-sentence {
+  font-weight: 650;
+}
+
+.criminals-footer {
+  gap: 16px;
+  min-height: 84px;
+  border-top: 1px solid var(--case-line);
+  color: var(--case-muted);
+  font-size: .875rem;
+  letter-spacing: 0;
+}
+
+@media (max-width: 720px) {
+  .criminals-hero {
+    background:
+      radial-gradient(ellipse at 110% 96%, #623e3b 0%, #392831 40%, transparent 82%),
+      #24232a;
+  }
+
+  .criminals-hero::after {
+    right: -31%;
+    width: 75%;
+  }
+
+  .criminals-case-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .criminals-case-grid > * {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 460px) {
+  .criminals-zhao-profile {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .criminals-zhao-gallery {
+    max-width: 140px;
+  }
+
+  .criminals-table :is(th, td) {
+    padding-inline: 8px;
+  }
+
+  .criminals-table thead th:first-child {
+    width: 24%;
+  }
+
+  .criminals-table thead th:last-child {
+    width: 30%;
+  }
+
+  .criminals-table tbody th[scope="row"],
+  .criminals-sentence {
+    font-size: .875rem;
+  }
+}

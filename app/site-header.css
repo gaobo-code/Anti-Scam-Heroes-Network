@@ -1,0 +1,291 @@
+.site-header {
+  --header-accent: #d5ee91;
+  --header-action-border: #d5ee9152;
+  --header-action-bg: #d5ee9112;
+  --header-action-hover-bg: #d5ee9124;
+  color: #f1f2e9;
+  background: #171c20;
+  border-bottom: 1px solid #ffffff26;
+}
+
+.site-header-overlay {
+  position: absolute;
+  z-index: 20;
+  inset: 0 0 auto;
+  background: #11251fed;
+}
+
+.site-header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 78px;
+  margin-inline: auto;
+  padding: 8px max(clamp(14px, 5vw, 72px), env(safe-area-inset-right))
+    8px max(clamp(14px, 5vw, 72px), env(safe-area-inset-left));
+}
+
+.site-header-brand,
+.site-header-nav > :is(a, button) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+.site-header-brand {
+  gap: 10px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.site-header-mark {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #d5ee913d;
+  border-radius: 12px;
+  background: #d5ee9112;
+}
+
+.site-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .9375rem;
+  line-height: 1.25;
+}
+
+.site-header-nav > :is(a, button) {
+  font-weight: 600;
+}
+
+.site-header-nav > .site-header-action {
+  padding-inline: 16px;
+  border: 1px solid var(--header-action-border);
+  border-radius: 999px;
+  background: var(--header-action-bg);
+  color: var(--header-accent);
+}
+
+.site-header-pair {
+  --friendly-links-surface: #f9f8f0;
+}
+
+.site-header-pair .site-header-brand {
+  letter-spacing: .035em;
+}
+
+.site-header-pair .site-header-mark {
+  border: 0;
+  background: transparent;
+}
+
+.site-header-pair .site-header-nav {
+  gap: 6px;
+}
+
+.site-header-pair .site-header-nav > :is(a, button) {
+  justify-content: center;
+  gap: 8px;
+  padding-inline: 14px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.site-header-pair .site-header-nav > button {
+  color: #94ae90;
+  cursor: pointer;
+}
+
+.site-header-friends-icon {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  transform: rotate(-35deg);
+}
+
+.site-header-friends-icon::before,
+.site-header-friends-icon::after {
+  position: absolute;
+  inset-block: 0;
+  width: 9px;
+  height: 7px;
+  margin-block: auto;
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+  content: "";
+}
+
+.site-header-friends-icon::before {
+  inset-inline-start: 0;
+}
+
+.site-header-friends-icon::after {
+  inset-inline-end: 0;
+}
+
+.site-header-pair .site-header-nav > .site-header-action {
+  background: var(--header-action-bg);
+}
+
+.site-header-pair .site-header-action::before {
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  flex: none;
+  content: "";
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+  background: linear-gradient(currentColor, currentColor) center / 1px 100% no-repeat;
+}
+
+.site-header-pair .site-header-action[href="/"]::before {
+  border: 0;
+  border-radius: 0;
+  background: currentColor;
+  clip-path: polygon(evenodd, 8px 0, 16px 7px, 14px 7px, 14px 15px, 2px 15px, 2px 7px, 0 7px, 8px 0,
+    8px 2px, 3.5px 6px, 3.5px 13.5px, 6px 13.5px, 6px 9px, 10px 9px, 10px 13.5px, 12.5px 13.5px, 12.5px 6px, 8px 2px);
+}
+
+@media (hover: hover) {
+  .site-header-brand:hover {
+    color: var(--header-accent);
+  }
+
+  .site-header-nav > .site-header-action:hover {
+    border-color: var(--header-accent);
+    background: var(--header-action-hover-bg);
+  }
+
+  .site-header-pair .site-header-nav > button:hover {
+    color: #f6f8ee;
+  }
+
+  .site-header-pair .site-header-nav > .site-header-action:hover {
+    background: var(--header-action-hover-bg);
+  }
+}
+
+.site-header :is(.site-header-brand, .site-header-nav > a, .site-header-nav > button):focus-visible {
+  outline: 2px solid var(--header-accent);
+  outline-offset: 3px;
+}
+
+@media (width > 600px) {
+  .site-header-pair .site-header-nav > button {
+    min-inline-size: 7rem;
+    background: linear-gradient(180deg, #f0ffc30d, transparent) #242d25;
+    color: #e2ebdf;
+  }
+
+  @media (hover: hover) {
+    .site-header-pair .site-header-nav > button:hover {
+      background-color: #35442d;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header-inner {
+    min-height: 64px;
+    column-gap: 8px;
+  }
+
+  .site-header-brand {
+    gap: 7px;
+    font-size: 1rem;
+  }
+
+  .site-header-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+  }
+
+  .site-header-mark img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .site-header-nav {
+    gap: 4px;
+    font-size: .875rem;
+  }
+
+  .site-header-nav > .site-header-action {
+    padding-inline: 10px;
+  }
+
+  .site-header-pair {
+    background: var(--night, #171c20);
+    border-bottom-color: #ffffff1a;
+  }
+
+  .site-header-pair .site-header-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    row-gap: 4px;
+    padding-block: 8px 9px;
+  }
+
+  .site-header-pair .site-header-brand {
+    gap: 10px;
+    font-size: 1.125rem;
+    letter-spacing: 0;
+  }
+
+  .site-header-pair .site-header-mark {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #c3d4ae26;
+    border-radius: 50%;
+    background: #c3d4ae0f;
+  }
+
+  .site-header-pair .site-header-nav {
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .site-header-pair .site-header-nav > :is(a, button)::before {
+    content: none;
+  }
+
+  .site-header-pair .site-header-nav > button {
+    padding-inline: 0 8px;
+  }
+
+  .site-header-friends-icon {
+    display: none;
+  }
+
+  .site-header-friends-label {
+    text-decoration: underline solid currentColor 2px;
+    text-underline-offset: .3em;
+  }
+
+  .site-header-pair .site-header-nav > .site-header-action {
+    padding-inline: 14px;
+    border: 1px solid var(--header-action-border);
+    border-radius: 9px;
+  }
+}
+
+@media (max-width: 540px) {
+  .site-header-pair .site-header-inner {
+    padding-inline: max(6%, env(safe-area-inset-left)) max(6%, env(safe-area-inset-right));
+  }
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./site-header.css";
 
 export const metadata: Metadata = {
   title: { default: "反诈英雄网", template: "%s｜反诈英雄网" },

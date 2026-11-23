@@ -1,15 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import FriendlyLinks from "./friendly-links";
+import SiteHeader from "./site-header";
 import "./home.css";
 
 export default function Home() {
   return (
     <main className="landing">
-      <header className="landing-header">
-        <Link className="landing-brand" href="/" aria-label="反诈英雄网首页"><span className="landing-logo"><Image src="/brand-light.png" alt="" width={34} height={34} /></span><span>反诈英雄网<small>COURAGE, REMEMBERED.</small></span></Link>
-        <nav className="landing-nav" aria-label="主导航"><FriendlyLinks /><Link href="/heroes/huijian">阅读故事 <span aria-hidden="true">↗</span></Link></nav>
-      </header>
+      <SiteHeader action={{ href: "/heroes/huijian", label: "阅读故事" }} showFriendlyLinks />
       <section className="landing-hero" aria-labelledby="landing-title">
         <div className="landing-label"><span><i /> 纪念与电诈恶势力抗争的英雄</span><span>铭记牺牲 / 守护正义</span></div>
         <div className="landing-composition">

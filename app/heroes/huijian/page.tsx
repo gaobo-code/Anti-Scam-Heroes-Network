@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import FriendlyLinks from "../../friendly-links";
+import SiteHeader from "../../site-header";
 import "../../home.css";
 import "./story.css";
 
@@ -16,17 +16,24 @@ const timeline = [
 export default function HuijianPage() {
   return (
     <main className="landing biography">
-      <header className="landing-header">
-        <Link className="landing-brand" href="/" aria-label="反诈英雄网首页"><span className="landing-logo"><Image src="/brand-light.png" alt="" width={34} height={34} /></span><span>反诈英雄网<small>COURAGE, REMEMBERED.</small></span></Link>
-        <nav className="landing-nav" aria-label="主导航">
-          <FriendlyLinks />
-          <Link href="/">返回首页</Link>
-        </nav>
-      </header>
+      <SiteHeader action={{ href: "/", label: "返回首页" }} showFriendlyLinks />
       <div className="bio-container">
         <div className="bio-breadcrumb"><Link href="/">首页</Link><span aria-hidden="true">/</span><span>铭记英雄 · 001</span></div>
         <section className="bio-hero" aria-labelledby="bio-title">
-          <div className="bio-hero-copy"><p className="bio-eyebrow">THE COURAGE TO SPEAK OUT</p><h1 id="bio-title">徽剑<span>吴恺 / WU KAI</span></h1><p className="bio-headline">他揭开黑暗，<br />我们<span>记住他的名字。</span></p><p className="bio-intro">因揭露电诈犯罪，遭犯罪集团报复杀害。<br />一个为受害者发声、与罪恶抗争的普通人，<br className="bio-desktop-break" />不该被遗忘。</p><div className="bio-actions"><Link className="bio-memorial-link" href="/heroes/huijian/memorial">祭奠徽剑 <span aria-hidden="true">↗</span></Link><a className="bio-scroll" href="#life">读他走过的路 <span aria-hidden="true">↓</span></a></div></div>
+          <div className="bio-hero-copy">
+            <p className="bio-eyebrow">THE COURAGE TO SPEAK OUT</p>
+            <h1 id="bio-title">徽剑<span>吴恺 / WU KAI</span></h1>
+            <p className="bio-headline">他揭开黑暗，<br />我们<span>记住他的名字。</span></p>
+            <p className="bio-intro">因揭露电诈犯罪，遭犯罪集团报复杀害。<br />一个为受害者发声、与罪恶抗争的普通人，<br className="bio-desktop-break" />不该被遗忘。</p>
+            <div className="bio-actions">
+              <Link className="bio-memorial-link" href="/heroes/huijian/memorial">祭奠徽剑 <span aria-hidden="true">↗</span></Link>
+              <Link className="bio-history-link" href="/heroes/huijian/memorial/history">
+                <span className="bio-history-icon" aria-hidden="true" />
+                祭奠历史
+                <span className="bio-history-arrow" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
           <aside className="bio-profile" aria-label="徽剑的人物资料"><div className="bio-profile-top"><span>人物档案 <b>/ 001</b></span><span className="bio-profile-emblem" aria-hidden="true">✳</span></div><div className="bio-profile-person"><div className="bio-photo"><Image src="/wukai-color.png" alt="徽剑（吴恺）生前照片" fill sizes="(max-width: 540px) 112px, 144px" preload /></div><div className="bio-profile-identity"><span className="bio-profile-role">民间反诈人士</span><strong>徽剑</strong><span>本名 吴恺</span></div></div><dl className="bio-facts"><div><dt>故乡</dt><dd>安徽 · 安庆</dd></div><div><dt>早年经历</dt><dd>在深圳从事互联网行业</dd></div><div><dt>离世时间</dt><dd>2024 年 11 月</dd></div></dl><div className="bio-profile-dedication"><span aria-hidden="true">“</span><p>一台电脑，一个人的坚持。<br /><strong>为素不相识的人，选择站出来。</strong></p></div></aside>
         </section>
         <section className="bio-chapter bio-introduction" aria-labelledby="intro-title"><div className="bio-section-label"><span>01 / 人物</span><h2 id="intro-title">他是谁</h2></div><div className="bio-prose"><p className="bio-lead">徽剑，本名吴恺，安徽安庆人。早年在深圳从事互联网行业。他本可以安稳经营事业、平淡度日，却选择走上一条艰难而危险的民间反诈之路。</p><p>没有官方侦查权限，没有专业团队支撑。他凭一台电脑，日夜搜集线索、整理证据，通过个人平台持续曝光电诈内幕。他知道揭开黑产会招致报复，却仍拒绝向黑恶势力妥协。</p></div></section>

@@ -15,13 +15,13 @@ export default function FriendlyLinks() {
   return (
     <>
       <button
-        className="landing-friends-trigger"
         type="button"
         aria-haspopup="dialog"
         aria-controls="friendly-links-dialog"
         onClick={() => dialog.current?.showModal()}
       >
-        友情链接
+        <span className="site-header-friends-icon" aria-hidden="true" />
+        <span className="site-header-friends-label">友情链接</span>
       </button>
       <dialog
         ref={dialog}

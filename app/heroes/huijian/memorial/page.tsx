@@ -1,6 +1,5 @@
-import Image from "next/image";
 import type { Metadata, Viewport } from "next";
-import Link from "next/link";
+import SiteHeader from "../../../site-header";
 import MemorialExperience from "./memorial-experience";
 
 export const metadata: Metadata = { title: "祭奠徽剑", description: "为反诈英雄徽剑（吴恺）献上一束花。" };
@@ -9,7 +8,7 @@ export const viewport: Viewport = { interactiveWidget: "resizes-content" };
 
 export default function MemorialPage() {
   return <main className="memorial-page">
-    <nav className="site-nav memorial-nav" aria-label="主导航"><Link className="brand" href="/"><Image className="brand-mark" src="/brand-light.png" alt="" width={42} height={42} /><span>反诈英雄网</span></Link><Link className="nav-back" href="/heroes/huijian">← 返回徽剑生平</Link></nav>
+    <SiteHeader action={{ href: "/heroes/huijian", label: "返回徽剑生平" }} overlay />
     <MemorialExperience />
     <p className="memorial-footnote">愿每一份微小的纪念，都成为抵抗遗忘的力量。</p>
   </main>;
