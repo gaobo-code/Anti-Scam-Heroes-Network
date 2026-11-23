@@ -39,6 +39,17 @@
 .landing-ribbon { display:flex; justify-content:space-around; gap:32px; align-items:center; white-space:nowrap; overflow:hidden; background:var(--lime); color:#243127; padding:23px 24px; font-size:22px; font-weight:700; }
 .landing-ribbon i { font-style:normal; font-size:30px; }
 .landing-ribbon>span:nth-of-type(2) { font:800 22px/1.5 Arial,sans-serif; }
+@media(max-width:767px) {
+  .landing-ribbon {
+    justify-content:center;
+    gap:8px;
+    padding:20px 10px;
+    font-size:min(32px,calc((100vw - 36px) / 17.5));
+  }
+  .landing-ribbon i,
+  .landing-ribbon>span:nth-of-type(2) { font-size:inherit; }
+  .landing-ribbon>:nth-child(n+4) { display:none; }
+}
 .landing-purpose { display:grid; grid-template-columns:minmax(180px,1fr) minmax(0,3fr); gap:6%; padding-block:88px 96px; scroll-margin-top:28px; }
 .landing-purpose-label { color:var(--lime); font:13px/1.6 Arial,sans-serif; letter-spacing:.06em; padding-top:12px; }
 .landing-purpose-label span { display:block; margin-top:10px; color:var(--soft); font-size:15px; letter-spacing:0; }
@@ -394,8 +405,6 @@
   .landing-card-text { font-size:16px; margin:24px 0; }.landing-read { font-size:19px; }
   .landing-hero-foot { font-size:13px; gap:12px; padding:20px 0; }
   .landing-hero-foot>span:nth-child(2) { width:100%; }.landing-hero-foot a { gap:20px; }
-  .landing-ribbon { justify-content:flex-start; gap:24px; padding:20px 24px; font-size:20px; }
-  .landing-ribbon>span:nth-of-type(2) { font-size:20px; }
   .landing-purpose { padding-block:50px 56px; gap:22px; }.landing-purpose-label { gap:16px; flex-wrap:wrap; }
   .landing-purpose-label span { font-size:13px; }.landing-purpose h2 { font-size:clamp(26px,6.7vw,34px); }
   .landing-purpose-details { grid-template-columns:1fr; gap:22px; font-size:16px; margin-top:24px; }

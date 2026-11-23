@@ -215,7 +215,7 @@ a { color:inherit; text-decoration:none; } button { font:inherit; }
 
 /* Share the live viewport between the scene and the actual panel height. */
 @media (width < 1280px) {
-  html:has(.memorial-page), body:has(.memorial-page) {
+  html[data-memorial-active], html[data-memorial-active] body {
     height:100%; overflow:hidden; overscroll-behavior:none;
   }
   .memorial-page {
@@ -251,7 +251,7 @@ a { color:inherit; text-decoration:none; } button { font:inherit; }
 }
 
 /* Enter the memorial immediately, without the site's smooth page scrolling. */
-html:has(.memorial-page) { scroll-behavior:auto; }
+html[data-memorial-active] { scroll-behavior:auto; }
 .tribute-input { grid-column:1/-1; display:grid; gap:5px; padding:10px; color:#fff5df; font-size:13px; }
 .tribute-input textarea { width:100%; box-sizing:border-box; resize:none; padding:8px; border:1px solid #ffffff40; border-radius:6px; background:#091f1880; color:white; font:inherit; }
 .tribute-input textarea::placeholder { color:#b9c7bf; }

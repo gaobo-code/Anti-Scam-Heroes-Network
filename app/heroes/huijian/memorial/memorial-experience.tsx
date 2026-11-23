@@ -11,22 +11,43 @@ const Memorial3D = dynamic(() => import("./memorial-3d"), { ssr: false, loading:
 type RitualState = "idle" | "approach" | "tribute" | "bow" | "place" | "complete";
 
 export default function MemorialExperience() {
+  const [visit, setVisit] = useState(0);
+
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    root.setAttribute("data-memorial-active", "");
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    return () => {
+      root.removeAttribute("data-memorial-active");
+      // Next.js can hide this route while keeping its component state alive.
+      setVisit((current) => current + 1);
+    };
+  }, []);
+
+  return <MemorialVisit key={visit} />;
+}
+
+function MemorialVisit() {
   const [selected, setSelected] = useState<FlowerId>("chrysanthemum");
   const [bed, setBed] = useState<FlowerBed>({ offerings: [], nextSlot: 0, revision: 0 });
   const { offerings, nextSlot, revision } = bed;
-  const [loaded, setLoaded] = useState(false);
   const [ritual, setRitual] = useState<RitualState>("idle");
   const [musicOn, setMusicOn] = useState(true);
   const [tribute, setTribute] = useState("");
   const [ceremonyTribute, setCeremonyTribute] = useState("");
   const [visibleTribute, setVisibleTribute] = useState("");
   const ritualTimers = useRef<number[]>([]);
-  useEffect(() => () => { ritualTimers.current.forEach(window.clearTimeout); }, []);
   const tributeDialog = useRef<HTMLDialogElement>(null);
   const stopMusic = useRef<(() => void) | null>(null);
 
   useLayoutEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    const dialog = tributeDialog.current;
+    const timers = ritualTimers.current;
+    return () => {
+      timers.forEach(window.clearTimeout);
+      timers.length = 0;
+      if (dialog?.open) dialog.close();
+    };
   }, []);
 
   useEffect(() => {
@@ -49,31 +70,6 @@ export default function MemorialExperience() {
   }, []);
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      try {
-        const savedBed = JSON.parse(window.localStorage.getItem("huijian-flower-bed-v3") ?? "null");
-        const saved = savedBed?.offerings ?? JSON.parse(window.localStorage.getItem("huijian-offerings-v2") ?? "[]");
-        if (Array.isArray(saved)) {
-          const valid = saved.filter((id): id is FlowerId => flowers.some((item) => item.id === id)).slice(-24);
-          const next = valid.length < 24 ? valid.length : Number.isInteger(savedBed?.nextSlot) && savedBed.nextSlot >= 0 && savedBed.nextSlot < 24 ? savedBed.nextSlot : 0;
-          setBed({ offerings: valid, nextSlot: next, revision: 0 });
-        }
-      } catch { /* Keep an empty bed if the local record cannot be read. */ }
-      setLoaded(true);
-    });
-    return () => window.cancelAnimationFrame(frame);
-  }, []);
-
-  useEffect(() => {
-    if (!loaded) return;
-    try {
-      window.localStorage.setItem("huijian-flower-bed-v3", JSON.stringify(bed));
-      window.localStorage.setItem("huijian-offerings-v2", JSON.stringify(bed.offerings));
-      window.localStorage.setItem("huijian-flower-count", String(bed.offerings.length));
-    } catch { /* The ceremony still works when device storage is unavailable. */ }
-  }, [bed, loaded]);
-
-  useEffect(() => {
     stopMusic.current = startMemorialMusic();
     return () => {
       stopMusic.current?.();
@@ -93,7 +89,7 @@ export default function MemorialExperience() {
   }
 
   function beginRitual() {
-    if (!loaded || ritual !== "idle" || !tribute.trim()) return;
+    if (ritual !== "idle" || !tribute.trim()) return;
     const text = tribute.trim();
     const characters = Array.from(text);
     setCeremonyTribute(text);
@@ -101,6 +97,7 @@ export default function MemorialExperience() {
     setTribute("");
     setRitual("approach");
     ritualTimers.current.forEach(window.clearTimeout);
+    ritualTimers.current.length = 0;
     const schedule = (callback: () => void, delay: number) => {
       ritualTimers.current.push(window.setTimeout(callback, delay));
     };
@@ -130,7 +127,7 @@ export default function MemorialExperience() {
     <div className="ritual-status" role="status" aria-live="polite"><span>{ritual === "complete" ? "✓" : "·"}</span>{ritualText}</div>
     <div className="world-controls">
       <div className="world-flower-options" role="radiogroup" aria-label="选择祭奠鲜花">{flowers.map((item) => <button key={item.id} type="button" role="radio" aria-checked={selected === item.id} className={selected === item.id ? "selected" : ""} onClick={() => setSelected(item.id)} disabled={ritual !== "idle" && ritual !== "complete"}><span className={`world-flower-icon flower-${item.id}`} style={{ color: `#${item.color.toString(16).padStart(6, "0")}` }}>{item.icon}</span><span><strong>{item.name}</strong><small>{item.meaning}</small></span></button>)}</div>
-      <button className="ceremony-button" type="button" onClick={() => { const dialog = tributeDialog.current; if (!dialog) return; dialog.showModal(); dialog.focus({ preventScroll: true }); }} disabled={!loaded || ritual !== "idle"}><strong>{ritual === "idle" ? "开始祭奠" : ritual === "complete" ? "祭奠完成" : "仪式进行中"}</strong></button>
+      <button className="ceremony-button" type="button" onClick={() => { const dialog = tributeDialog.current; if (!dialog) return; dialog.showModal(); dialog.focus({ preventScroll: true }); }} disabled={ritual !== "idle"}><strong>{ritual === "idle" ? "开始祭奠" : ritual === "complete" ? "祭奠完成" : "仪式进行中"}</strong></button>
     </div>
     </aside>
     <dialog className="tribute-dialog" ref={tributeDialog} aria-labelledby="tribute-title" tabIndex={-1}>
@@ -142,7 +139,7 @@ export default function MemorialExperience() {
           <textarea id="memorial-tribute" aria-label="悼词（40字以内）" value={tribute} onChange={(event) => setTribute(event.target.value)} maxLength={40} required rows={3} placeholder="英名长存，山河铭记。" />
           <small className="tribute-desktop-detail">{tribute.length}/40 · 祭奠时将展示悼词</small>
         </label>
-        <button className="tribute-done" type="submit" disabled={!tribute.trim() || !loaded || ritual !== "idle"}>献花祭奠 <span aria-hidden="true">→</span></button>
+        <button className="tribute-done" type="submit" disabled={!tribute.trim() || ritual !== "idle"}>献花祭奠 <span aria-hidden="true">→</span></button>
       </form>
     </dialog>
   </section>;
