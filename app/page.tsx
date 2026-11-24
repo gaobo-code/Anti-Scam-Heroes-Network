@@ -4,18 +4,29 @@ import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
 import "./home.css";
 
+const tributeImageSizes = "(max-width: 767px) min(89vw, 542px), (max-width: 1100px) 45vw, 460px";
+
 export default function Home() {
   return (
     <main className="landing landing-home" id="top">
       <SiteHeader action={{ href: "/heroes/huijian", label: "阅读故事" }} showFriendlyLinks />
       <section className="landing-hero" aria-labelledby="landing-title">
-        <div className="landing-label"><span><i /> 纪念与电诈恶势力抗争的英雄</span><span>铭记牺牲 / 守护正义</span></div>
+        <div className="landing-label"><span><i /> 纪念与电诈恶势力抗争的英雄</span><span className="landing-motto">铭记牺牲 / 守护正义</span></div>
         <div className="landing-composition">
           <div className="landing-copy"><p className="landing-eyebrow">他们为揭露罪恶而战，我们为铭记英雄而来。</p><h1 id="landing-title">不忘记<span className="landing-title-line">每位<span className="landing-highlight">英雄<span className="landing-period">.</span></span></span></h1><p className="landing-description">他们揭露电诈、直面暴力，为受害者发声。<br />有人因此付出生命。我们不能让他们被遗忘。</p><Link className="landing-story-link" href="/heroes/huijian">从徽剑的故事开始 <span aria-hidden="true">↗</span></Link></div>
           <aside className="landing-feature" aria-labelledby="featured-name">
             <div className="landing-card-top"><span>铭记英雄 / 001</span><span className="landing-card-star" aria-hidden="true">✳</span></div>
-            <div className="landing-person"><div className="landing-avatar"><Image src="/wukai.png" alt="徽剑（吴恺）的照片" fill sizes="(max-width: 540px) 90px, (max-width: 850px) 112px, (max-width: 1100px) 96px, 112px" preload /></div><div><p>民间反诈人士</p><h2 id="featured-name">徽剑</h2><span>吴恺 / WU KAI</span></div></div>
-            <p className="landing-card-text">他揭露缅北、柬埔寨电诈园区的罪恶，<br />因触动犯罪集团利益，遭报复杀害。<br />他叫吴恺，人们记住他的名字：徽剑。</p>
+            <div className="landing-person">
+              <div className="landing-avatar">
+                <Image src="/wukai.png" alt="徽剑（吴恺）的照片" fill sizes="(max-width: 767px) clamp(86px, 22vw, 108px), 120px" preload />
+              </div>
+              <div>
+                <p>民间反诈人士</p>
+                <h2 id="featured-name">吴恺</h2>
+                <span className="landing-person-pinyin" lang="zh-Latn">WU KAI</span>
+              </div>
+            </div>
+            <p className="landing-card-text">他揭露缅北、柬埔寨电诈园区的罪恶，<br />因触动犯罪集团利益，遭报复杀害。<br />他叫吴恺，人们记住他的名字：<strong>徽剑</strong>。</p>
             <Link className="landing-read" href="/heroes/huijian"><span>走近徽剑<small>阅读他的故事</small></span><span className="landing-arrow" aria-hidden="true">↗</span></Link>
           </aside>
         </div>
@@ -46,7 +57,7 @@ export default function Home() {
                   src="/memorial-landscape.png"
                   alt="松树与银杏掩映着湖面，远处是雾中的山峦"
                   fill
-                  sizes="(max-width: 700px) 90vw, (max-width: 1100px) 58vw, 650px"
+                  sizes={tributeImageSizes}
                 />
                 <figcaption>徽剑祭奠园风景</figcaption>
               </figure>
@@ -55,9 +66,9 @@ export default function Home() {
                   src="/memorial-flowers.webp"
                   alt="一束白菊放在湖畔园中的石台上"
                   fill
-                  sizes="(max-width: 700px) 33vw, 340px"
+                  sizes={tributeImageSizes}
                 />
-                <figcaption>献花意象 · 插画</figcaption>
+                <figcaption>献花意象</figcaption>
               </figure>
             </div>
             <div className="landing-tribute-body">
