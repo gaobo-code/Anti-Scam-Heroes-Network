@@ -68,7 +68,7 @@
     line-height:1.85;
   }
 }
-.landing-purpose h2 { margin:0; font-size:clamp(30px,3vw,44px); line-height:1.5; font-weight:500; letter-spacing:-.025em; }
+.landing-purpose h2 { margin:0; font-size:clamp(30px,3vw,44px); line-height:1.45; font-weight:500; letter-spacing:-.025em; }
 .landing-purpose h2 span { color:var(--lime); }
 .landing-purpose-details { display:grid; grid-template-columns:1fr 1fr; gap:36px; color:var(--soft); font-size:16px; line-height:2; margin-top:36px; }
 .landing-purpose-details p { margin:0; }
