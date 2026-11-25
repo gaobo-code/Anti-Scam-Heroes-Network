@@ -37,14 +37,56 @@
 .bio-chapter { display:grid; grid-template-columns:minmax(170px,1fr) minmax(0,3fr); gap:7%; padding:64px 0; border-top:1px solid #ffffff20; scroll-margin-top:24px; }
 .bio-section-label>span { color:var(--lime); font-size:13px; }.bio-section-label h2 { font-size:23px; font-weight:500; margin:12px 0; }.bio-section-label p { color:var(--soft); font-size:14px; line-height:1.9; }
 .bio-prose { max-width:850px; }.bio-prose p { font-size:16px; line-height:2.1; color:var(--soft); margin:0 0 24px; }.bio-prose p:last-child { margin-bottom:0; }.bio-prose .bio-lead { color:#e5eadd; font-size:20px; line-height:1.9; }
-.bio-quote { display:flex; align-items:center; gap:30px; padding:38px 44px; margin:5px 0 64px; border-radius:20px; background:var(--lime); color:#26352b; }.bio-quote-symbol { font:90px/1 Georgia,serif; height:60px; }.bio-quote p { font-size:clamp(22px,2.8vw,36px); font-weight:600; margin:0 0 14px; }.bio-quote div>span { font-size:13px; color:#526440; }.bio-quote-star { margin-left:auto; font-size:48px; }
+.bio-life-lead {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:clamp(24px,5vw,64px);
+  padding:clamp(24px,4vw,48px) clamp(22px,5vw,64px);
+  margin:5px 0 clamp(42px,6vw,64px);
+  border-radius:20px;
+  background:var(--lime);
+  color:#26352b;
+}
+.bio-life-lead p {
+  max-width:24em;
+  margin:0;
+  font-size:clamp(22px,3vw,36px);
+  font-weight:600;
+  line-height:1.5;
+  text-wrap:pretty;
+}
+.bio-life-lead p > span {
+  display:block;
+  margin-bottom:clamp(8px,1vw,12px);
+  color:#435337;
+  font-size:clamp(15px,1.6vw,19px);
+  font-weight:500;
+  letter-spacing:.06em;
+  line-height:1.45;
+}
+.bio-life-lead-star {
+  display:grid;
+  place-items:center;
+  flex:none;
+  width:clamp(56px,7vw,88px);
+  aspect-ratio:1;
+  border:1px solid currentColor;
+  border-radius:50%;
+  font-size:clamp(26px,3.5vw,42px);
+  line-height:1;
+}
+@media(max-width:750px) {
+  .bio-life-lead-star { display:none; }
+}
 .bio-event { position:relative; border-left:1px solid #d5ee9140; padding:0 0 40px 32px; }.bio-event::before { content:""; position:absolute; top:8px; left:-5px; width:9px; height:9px; border-radius:50%; background:var(--lime); box-shadow:0 0 0 5px #171c20; }.bio-event:last-of-type { padding-bottom:15px; }
 .bio-event-meta { display:flex; justify-content:space-between; gap:20px; align-items:center; }.bio-event time { color:var(--lime); font:16px/1.6 Arial,sans-serif; }.bio-event-meta>span { color:#919b94; font:13px/1.6 Arial,sans-serif; }.bio-event h3 { font-size:23px; font-weight:500; margin:12px 0; }.bio-event p { font-size:16px; line-height:2; color:var(--soft); margin:0; max-width:44em; }.bio-source { margin:25px 0 0 32px; font-size:13px; color:var(--soft); }
-.bio-prose h3 { font-size:clamp(26px,3vw,40px); line-height:1.65; font-weight:500; margin:0 0 24px; }.bio-prose h3 span { color:var(--lime); }
+.bio-prose h3 { font-size:clamp(26px,3vw,40px); line-height:1.65; font-weight:500; margin:0 0 24px; }
+.bio-prose h3 span { color:var(--lime); }
 
 @media(max-width:1050px) { .bio-hero { gap:5%; grid-template-columns:1.1fr 1fr; }.bio-profile { padding:0 0 0 24px; }.bio-photo { width:112px; height:140px; }.bio-profile-person { gap:18px; }.bio-profile-person strong { font-size:28px; }.bio-chapter { gap:5%; grid-template-columns:170px minmax(0,1fr); } }
-@media(max-width:750px) { .bio-hero { grid-template-columns:1fr; gap:36px; padding:40px 0 55px; }.bio-headline { font-size:30px; }.bio-profile { width:100%; max-width:none; padding:28px 0 0; border-left:0; border-top:1px solid #ffffff26; }.bio-chapter { grid-template-columns:1fr; gap:24px; padding:42px 0; }.bio-section-label h2 { margin:8px 0 0; }.bio-section-label p { display:none; }.bio-quote { margin-bottom:42px; padding:28px; gap:16px; }.bio-quote-star { display:none; }.bio-quote p { font-size:24px; } }
-@media(max-width:540px) { .bio-container { width:88%; }.bio-headline { font-size:26px; }.bio-intro { font-size:16px; }.bio-desktop-break { display:none; }.bio-profile-person { gap:22px; }.bio-profile-person strong { font-size:32px; }.bio-facts>div { grid-template-columns:80px 1fr; }.bio-prose .bio-lead { font-size:18px; }.bio-quote { padding:26px 22px; align-items:flex-start; gap:12px; }.bio-quote-symbol { font-size:58px; height:40px; }.bio-quote p { font-size:22px; }.bio-event { padding-left:24px; padding-bottom:32px; }.bio-event h3 { font-size:21px; }.bio-source { margin-left:24px; } }
+@media(max-width:750px) { .bio-hero { grid-template-columns:1fr; gap:36px; padding:40px 0 55px; }.bio-headline { font-size:30px; }.bio-profile { width:100%; max-width:none; padding:28px 0 0; border-left:0; border-top:1px solid #ffffff26; }.bio-chapter { grid-template-columns:1fr; gap:24px; padding:42px 0; }.bio-section-label h2 { margin:8px 0 0; }.bio-section-label p { display:none; } }
+@media(max-width:540px) { .bio-container { width:88%; }.bio-headline { font-size:26px; }.bio-intro { font-size:16px; }.bio-desktop-break { display:none; }.bio-profile-person { gap:22px; }.bio-profile-person strong { font-size:32px; }.bio-facts>div { grid-template-columns:80px 1fr; }.bio-prose .bio-lead { font-size:18px; }.bio-event { padding-left:24px; padding-bottom:32px; }.bio-event h3 { font-size:21px; }.bio-source { margin-left:24px; } }
 .bio-actions {
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -132,18 +174,32 @@
 .bio-memorial-link { gap:28px; padding:10px 24px; background:var(--lime); border-radius:30px; color:#26352b; font-size:16px; font-weight:600; }
 .bio-memorial-link:hover { background:#e4f6b7; }.bio-memorial-link>span { font-size:23px; }
 .bio-profile-top>span:last-child { color:var(--lime); }
-.bio-accountability { padding:42px 0 64px; margin-bottom:28px; border-top:1px solid #e0a18b55; }
-.bio-accountability-label { display:flex; justify-content:space-between; align-items:center; color:#edaa91; font-size:13px; }.bio-accountability-label>span:last-child { font-size:32px; }
-.bio-accountability h2 { margin:28px 0 30px; font-size:clamp(32px,4.2vw,58px); font-weight:600; line-height:1.5; letter-spacing:-.035em; }.bio-accountability h2 span { color:#edaa91; }
-.bio-accountability-bottom { display:flex; justify-content:space-between; align-items:center; gap:28px; }.bio-accountability-bottom p { font-size:16px; line-height:2; color:var(--soft); margin:0; }.bio-accountability-bottom a { display:flex; align-items:center; justify-content:space-between; gap:32px; padding:13px 24px; background:#edaa91; color:#2c211e; border-radius:30px; font-size:16px; font-weight:600; white-space:nowrap; }.bio-accountability-bottom a span { font-size:24px; }.bio-accountability-bottom a:hover { background:#f5c1ad; }
-@media(max-width:750px) { .bio-accountability { padding:32px 0 42px; margin-bottom:10px; }.bio-accountability-bottom { align-items:flex-start; flex-direction:column; gap:24px; }.bio-accountability h2 { font-size:clamp(30px,7vw,44px); }.bio-profile-top { margin-bottom:24px; }.bio-profile-person { margin-top:0; } }
+.bio-accountability .bio-section-label > span, .bio-accountability .bio-prose h3 span { color:#edaa91; }
+.bio-accountability .bio-prose p { margin-bottom:clamp(24px,3vw,32px); }
+.bio-accountability-link {
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+  padding:13px 24px;
+  background:#edaa91;
+  color:#2c211e;
+  border-radius:30px;
+  font-size:16px;
+  font-weight:600;
+  white-space:nowrap;
+}
+.bio-accountability-link span { font-size:24px; }
+.bio-accountability-link:hover { background:#f5c1ad; }
+.bio-accountability-link:focus-visible { outline:2px solid #edaa91; outline-offset:4px; }
+@media(max-width:750px) { .bio-profile-top { margin-bottom:24px; }.bio-profile-person { margin-top:0; } }
 @media(max-width:540px) {
   .bio-actions { gap:8px; }
   .bio-memorial-link { font-size:15px; gap:8px; padding-inline:12px; }
   .bio-history-link { font-size:15px; gap:6px; padding-inline:8px; }
   .bio-history-icon { width:26px; height:26px; }
   .bio-history-icon::after { top:7px; left:12px; }
-  .bio-accountability-bottom a { font-size:15px; width:100%; }
+  .bio-accountability-link { font-size:15px; width:100%; }
   .bio-profile { padding-top:24px; }
 }
 @media(max-width:320px) {
