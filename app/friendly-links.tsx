@@ -46,7 +46,7 @@ export default function FriendlyLinks() {
             <div className="landing-friend-portrait">
               <Image
                 className="landing-friend-image"
-                src="/wang-siyu-portrait.png"
+                src="/wang-siyu-portrait.webp"
                 alt="《老赖王思宇的故事》网站宣传图中的人物肖像"
                 fill
                 sizes="(min-width: 768px) 276px, (max-width: 460px) 129px, (max-width: 626px) 42.32vw, 265px"

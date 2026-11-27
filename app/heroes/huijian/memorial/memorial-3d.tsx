@@ -134,7 +134,7 @@ export default function Memorial3D({ ritual, selected, offerings, nextSlot, revi
         ctx.drawImage(portrait,cropX,portrait.naturalHeight*.25,cropWidth,cropHeight,274,162,220,260);
         labelTexture.needsUpdate=true;
       };
-      portrait.src="/wukai.png";
+      portrait.src="/wukai.webp";
       const label=new THREE.Mesh(new THREE.PlaneGeometry(2.15,2.88),new THREE.MeshBasicMaterial({map:labelTexture,transparent:true,depthWrite:false})); label.position.set(0,2.37,.66); label.renderOrder=5; grave.add(label);
 
       const flowerLayer = new THREE.Group(); scene.add(flowerLayer);

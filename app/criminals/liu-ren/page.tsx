@@ -51,11 +51,11 @@ export default function LiuRenPage({ searchParams }: LiuRenPageProps) {
           <h2 id="liu-ren-background">早年经历与在柬活动</h2>
           <div className="criminals-case-details">
             <div className="criminals-gallery criminals-liu-gallery">
-              <a href="/criminals/liu-ren-1.jpg" target="_blank" rel="noopener" aria-label="在新标签页查看第一张照片原图">
-                <Image src="/criminals/liu-ren-1.jpg" alt="刘忍在会场的资料照片" fill sizes="(max-width: 720px) 45vw, 560px" />
+              <a href="/criminals/liu-ren-1.webp" target="_blank" rel="noopener" aria-label="在新标签页查看第一张照片原图">
+                <Image src="/criminals/liu-ren-1.webp" alt="刘忍在会场的资料照片" fill sizes="(max-width: 720px) 45vw, 560px" />
               </a>
-              <a href="/criminals/liu-ren-2.jpg" target="_blank" rel="noopener" aria-label="在新标签页查看第二张照片原图">
-                <Image src="/criminals/liu-ren-2.jpg" alt="刘忍的第二张资料照片" fill sizes="(max-width: 720px) 45vw, 560px" />
+              <a href="/criminals/liu-ren-2.webp" target="_blank" rel="noopener" aria-label="在新标签页查看第二张照片原图">
+                <Image src="/criminals/liu-ren-2.webp" alt="刘忍的第二张资料照片" fill sizes="(max-width: 720px) 45vw, 560px" />
               </a>
             </div>
             <ol className="criminals-profile-timeline">

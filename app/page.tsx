@@ -21,7 +21,7 @@ export default function Home() {
             <div className="landing-card-top"><span>铭记英雄 / 001</span><span className="landing-card-star" aria-hidden="true">✳</span></div>
             <div className="landing-person">
               <div className="landing-avatar">
-                <Image src="/wukai.png" alt="徽剑（吴恺）的照片" fill sizes="(max-width: 767px) clamp(86px, 22vw, 108px), 120px" preload />
+                <Image src="/wukai.webp" alt="徽剑（吴恺）的照片" fill sizes="(max-width: 767px) clamp(86px, 22vw, 108px), 120px" preload />
               </div>
               <div>
                 <p>民间反诈人士</p>
@@ -57,7 +57,7 @@ export default function Home() {
             <div className="landing-tribute-gallery">
               <figure className="landing-tribute-image">
                 <Image
-                  src="/memorial-landscape.png"
+                  src="/memorial-landscape.webp"
                   alt="松树与银杏掩映着湖面，远处是雾中的山峦"
                   fill
                   sizes={tributeImageSizes}

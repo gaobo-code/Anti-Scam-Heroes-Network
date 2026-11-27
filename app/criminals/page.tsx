@@ -116,11 +116,11 @@ export default function CriminalsPage() {
         <div className="criminals-cases">
           <CaseSection {...cases.liu} proposal={<p>刘忍应判处死刑</p>}>
             <div className="criminals-gallery criminals-liu-gallery">
-              <a href="/criminals/liu-ren-1.jpg" target="_blank" rel="noopener" aria-label="在新标签页查看刘忍第一张照片原图">
-                <Image src="/criminals/liu-ren-1.jpg" alt="刘忍的资料照片，会场画面" fill sizes="(max-width: 720px) 45vw, 390px" />
+              <a href="/criminals/liu-ren-1.webp" target="_blank" rel="noopener" aria-label="在新标签页查看刘忍第一张照片原图">
+                <Image src="/criminals/liu-ren-1.webp" alt="刘忍的资料照片，会场画面" fill sizes="(max-width: 720px) 45vw, 390px" />
               </a>
-              <a href="/criminals/liu-ren-2.jpg" target="_blank" rel="noopener" aria-label="在新标签页查看刘忍第二张照片原图">
-                <Image src="/criminals/liu-ren-2.jpg" alt="刘忍的第二张资料照片" fill sizes="(max-width: 720px) 45vw, 390px" />
+              <a href="/criminals/liu-ren-2.webp" target="_blank" rel="noopener" aria-label="在新标签页查看刘忍第二张照片原图">
+                <Image src="/criminals/liu-ren-2.webp" alt="刘忍的第二张资料照片" fill sizes="(max-width: 720px) 45vw, 390px" />
               </a>
             </div>
             <p>刘忍是吴恺生前公开举报的对象。界面新闻援引公安部通报称，2016 年，刘忍等人在陈志指挥下在柬埔寨创立金贝集团。据该报道采访的在柬华商介绍，刘忍团队参与了西哈努克港金贝园区的建设和日常运营。</p>
@@ -141,8 +141,8 @@ export default function CriminalsPage() {
           >
             <div className="criminals-zhao-profile">
               <div className="criminals-gallery criminals-zhao-gallery">
-                <a href="/criminals/zhao-bing.jpg" target="_blank" rel="noopener" aria-label="在新标签页查看赵冰照片原图">
-                  <Image src="/criminals/zhao-bing.jpg" alt="赵冰的资料照片" fill sizes="(max-width: 480px) 140px, 190px" />
+                <a href="/criminals/zhao-bing.webp" target="_blank" rel="noopener" aria-label="在新标签页查看赵冰照片原图">
+                  <Image src="/criminals/zhao-bing.webp" alt="赵冰的资料照片" fill sizes="(max-width: 480px) 140px, 190px" />
                 </a>
               </div>
               <div>

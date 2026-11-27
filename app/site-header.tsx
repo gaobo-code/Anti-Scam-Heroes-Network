@@ -18,7 +18,7 @@ export default function SiteHeader({
       <nav className="site-header-inner" aria-label="主导航">
         <Link className="site-header-brand" href="/" aria-label="反诈英雄网首页">
           <span className="site-header-mark">
-            <Image src="/brand-light.png" alt="" width={28} height={28} />
+            <Image src="/brand-light.webp" alt="" width={28} height={28} />
           </span>
           <span>反诈英雄网</span>
         </Link>

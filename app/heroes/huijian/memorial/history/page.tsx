@@ -17,7 +17,7 @@ export default function MemorialHistoryPage() {
         <section className="history-hero" aria-labelledby="history-title">
           <div className="history-landscape">
             <Image
-              src="/memorial-landscape.png"
+              src="/memorial-landscape.webp"
               alt=""
               fill
               sizes="(max-width: 600px) 100vw, (max-width: 1440px) 67vw, 960px"

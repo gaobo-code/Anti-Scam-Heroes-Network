@@ -4,7 +4,7 @@ export const siteUrl = new URL("https://www.fanzhahero.com");
 export const siteName = "反诈英雄网";
 
 const memorialImage = {
-  url: "/memorial-landscape.png",
+  url: "/memorial-landscape.webp",
   alt: "徽剑祭奠园风景",
 };
 
@@ -17,12 +17,12 @@ export const seoPages = {
   "/heroes/huijian": {
     title: "徽剑（吴恺）生平与反诈经历",
     description: "了解民间反诈人士徽剑（吴恺）的生平，以及他调查电诈园区、公开举报的经历。页面按时间整理吴恺遇害案的一审和二审进展。",
-    image: { url: "/wukai-color.png", alt: "徽剑（吴恺）生前照片" },
+    image: { url: "/wukai.webp", alt: "徽剑（吴恺）生前照片" },
   },
   "/criminals": {
     title: "徽剑案罪犯名单与判决结果",
     description: "查阅吴恺（徽剑）遇害案中赵冰等 14 名获刑人员的罪名与刑罚。页面同时整理案情报道和站内判刑主张。",
-    image: { url: "/anti-fraud-heroes-icon.png", alt: siteName },
+    image: { url: "/anti-fraud-heroes-icon.webp", alt: siteName },
   },
   "/heroes/huijian/memorial": {
     title: "徽剑（吴恺）线上祭奠园",
@@ -37,7 +37,7 @@ export const seoPages = {
   "/criminals/liu-ren": {
     title: "刘忍资料与金贝集团案公开进展",
     description: "根据公开报道与官方文件，整理刘忍在柬埔寨的商业及商会活动、金贝集团案侦办信息，以及吴恺（徽剑）公开举报的相关报道。",
-    image: { url: "/criminals/liu-ren-1.jpg", alt: "刘忍在会场的资料照片" },
+    image: { url: "/criminals/liu-ren-1.webp", alt: "刘忍在会场的资料照片" },
   },
 };
 
