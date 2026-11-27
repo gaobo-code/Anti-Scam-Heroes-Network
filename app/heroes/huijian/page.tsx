@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import LiuRenLink from "../../criminals/liu-ren-link";
 import SiteFooter from "../../site-footer";
 import SiteHeader from "../../site-header";
 import "../../home.css";
@@ -9,7 +10,11 @@ import "./story.css";
 export const metadata: Metadata = { title: "徽剑 · 吴恺", description: "记住反诈人士徽剑（吴恺）：他揭露电诈、直面罪恶，最终遭报复杀害。" };
 const timeline = [
   { year: "2023", title: "开始调查电诈园区", text: "徽剑开始关注缅北、柬埔寨等地的电诈园区，搜集线索、整理证据，并通过个人平台持续披露调查发现。" },
-  { year: "2024.08", title: "实名举报刘忍团伙", text: "徽剑实名举报刘忍团伙并公开线索。刘忍团队随即派人私下开出高价，试图让他删帖撤稿，遭徽剑拒绝。" },
+  {
+    year: "2024.08",
+    title: <>实名举报<LiuRenLink from="huijian" />团伙</>,
+    text: "徽剑实名举报刘忍团伙并公开线索。刘忍团队随即派人私下开出高价，试图让他删帖撤稿，遭徽剑拒绝。",
+  },
   { year: "2024.10", title: "针对徽剑的悬赏", text: "一名代号“少校”的境外人员通过加密软件悬赏杀害徽剑。赏金最初为30万元，后来增至100万元。" },
   { year: "2024.11.09", title: "最后一条朋友圈", text: "徽剑发布了生前最后一条朋友圈，明确表示，谢绝公关游说，只接受线索对接和官方沟通。" },
   { year: "2024.11.10", title: "在惠州被强行带走", text: "几名嫌疑人在广东惠州一处停车场冒充警察，将徽剑强行带走。他随后被转移到外省，并遭到严刑逼供。" },

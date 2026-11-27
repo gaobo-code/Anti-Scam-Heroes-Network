@@ -21,8 +21,13 @@
 }
 
 .criminals-container {
+  --case-module-gap: clamp(20px, 2.25vw, 32px);
+  --case-section-gap: clamp(12px, 1.6vw, 20px);
+  display: grid;
+  gap: var(--case-module-gap);
   width: min(1160px, calc(100% - 2 * var(--case-gutter)));
   margin-inline: auto;
+  padding-block: var(--case-module-gap);
 }
 
 @media (min-width: 768px) {
@@ -39,9 +44,12 @@
 .criminals-hero {
   position: relative;
   isolation: isolate;
+  display: grid;
+  align-items: center;
   overflow: hidden;
-  margin-block: clamp(18px, 3.2vw, 38px) clamp(24px, 3.75vw, 46px);
-  padding: clamp(32px, 6vw, 76px) clamp(20px, 5.8vw, 74px);
+  /* Match the memorial history banner's title, supporting content, and vertical padding. */
+  min-height: calc(93.1px + clamp(34px, 4.5vw, 54px) * 1.18 + clamp(24px, 3vw, 38px) * 2);
+  padding: 16px clamp(20px, 5.8vw, 74px);
   border: 1px solid #49383f;
   border-radius: clamp(18px, 2.7vw, 32px);
   background:
@@ -94,7 +102,7 @@
 }
 
 .criminals-hero h1 {
-  margin-block: 14px 18px;
+  margin-block: 8px 0;
   font-size: clamp(3rem, 8.1vw, 6.75rem);
   font-weight: 850;
   letter-spacing: -.04em;
@@ -103,7 +111,7 @@
 
 @media (min-width: 768px) {
   .criminals-hero h1 {
-    font-size: clamp(3rem, 7vw, 6rem);
+    font-size: clamp(3rem, 6vw, 5rem);
   }
 }
 
@@ -116,18 +124,44 @@
 
 .criminals-cases {
   display: grid;
-  gap: clamp(20px, 3vw, 34px);
-  margin-bottom: clamp(42px, 6vw, 72px);
+  gap: var(--case-module-gap);
 }
 
 .criminals-card {
   min-width: 0;
-  padding: clamp(16px, 3.5vw, 42px);
+  padding: clamp(16px, 2vw, 28px) clamp(16px, 3.5vw, 42px);
   scroll-margin-top: 20px;
   border: 1px solid var(--case-line);
   border-radius: clamp(18px, 2.25vw, 28px);
   background: linear-gradient(150deg, #222129, var(--case-panel) 36%);
   box-shadow: 0 18px 48px #0002;
+}
+
+.criminals-profile h2 {
+  margin-bottom: var(--case-section-gap);
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 750;
+}
+
+.criminals-profile-timeline {
+  display: grid;
+  gap: var(--case-section-gap);
+  margin-top: var(--case-section-gap);
+}
+
+.criminals-profile-timeline li + li {
+  padding-top: var(--case-section-gap);
+  border-top: 1px solid var(--case-line);
+}
+
+.criminals-profile-timeline h3 {
+  color: var(--case-accent);
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.criminals-profile-timeline h3 + p {
+  margin-top: 6px;
 }
 
 .criminals-gallery {
@@ -197,8 +231,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px 16px;
-  margin-bottom: clamp(16px, 2.4vw, 28px);
-  padding-bottom: clamp(16px, 2.3vw, 26px);
+  margin-bottom: var(--case-section-gap);
+  padding-bottom: var(--case-section-gap);
   border-bottom: 1px solid var(--case-line);
 }
 
@@ -307,7 +341,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(265px, .46fr);
   align-items: start;
-  gap: clamp(18px, 3.5vw, 42px) clamp(18px, 3vw, 34px);
+  gap: var(--case-section-gap) clamp(18px, 3vw, 34px);
 }
 
 .criminals-case-details {
@@ -430,7 +464,7 @@
 .criminals-verdicts {
   grid-column: 1 / -1;
   grid-row: 2;
-  padding-top: clamp(20px, 3vw, 30px);
+  padding-top: var(--case-section-gap);
   border-top: 1px solid var(--case-line);
 }
 
@@ -505,6 +539,12 @@
 
 .criminals-sentence {
   font-weight: 650;
+}
+
+@media (max-width: 600px) {
+  .criminals-hero {
+    min-height: calc(133.1px + clamp(34px, 4.5vw, 54px) * 1.18);
+  }
 }
 
 @media (max-width: 720px) {
