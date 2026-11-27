@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { pageMetadata } from "./seo";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
 import "./home.css";
+
+export const metadata = pageMetadata("/");
 
 const tributeImageSizes = "(max-width: 767px) min(89vw, 542px), (max-width: 1100px) 45vw, 460px";
 

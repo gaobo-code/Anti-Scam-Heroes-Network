@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { siteName, siteUrl } from "./seo";
 import "./globals.css";
 import "./site-header.css";
 
 export const metadata: Metadata = {
-  title: { default: "反诈英雄网", template: "%s｜反诈英雄网" },
+  metadataBase: siteUrl,
+  title: siteName,
   description: "记录并纪念为揭露诈骗、守护普通人而付出的反诈英雄。",
 };
 

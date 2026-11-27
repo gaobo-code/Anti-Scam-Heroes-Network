@@ -1,15 +1,12 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { pageMetadata } from "../../../../seo";
 import SiteFooter from "../../../../site-footer";
 import SiteHeader from "../../../../site-header";
 import HistoryRecords from "./history-records";
 import "./history.css";
 
-export const metadata: Metadata = {
-  title: "祭奠历史",
-  description: "纪念徽剑（吴恺）的献花与悼词。",
-};
+export const metadata = pageMetadata("/heroes/huijian/memorial/history");
 
 export default function MemorialHistoryPage() {
   return (

@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import Image from "next/image";
+import { pageMetadata } from "../seo";
 import SiteFooter from "../site-footer";
 import SiteHeader from "../site-header";
 import type { CSSProperties, ReactNode } from "react";
@@ -9,10 +9,7 @@ import SupportButton from "./support-button";
 import { verdictGroups } from "./verdicts";
 import "./criminals.css";
 
-export const metadata: Metadata = {
-  title: "徽剑案罪犯名单与判刑主张",
-  description: "按四组展示吴恺（徽剑）遇害案相关人员、判刑主张及实际裁判结果。",
-};
+export const metadata = pageMetadata("/criminals");
 
 const followUpReport = "https://www.jiemian.com/article/15279448.html";
 const rumorReport = "https://www.sina.cn/news/detail/5358597815141061.html";

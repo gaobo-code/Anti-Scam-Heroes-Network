@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import LiuRenLink from "../../criminals/liu-ren-link";
+import { pageMetadata } from "../../seo";
 import SiteFooter from "../../site-footer";
 import SiteHeader from "../../site-header";
 import "../../home.css";
 import "./story.css";
 
-export const metadata: Metadata = { title: "徽剑 · 吴恺", description: "记住反诈人士徽剑（吴恺）：他揭露电诈、直面罪恶，最终遭报复杀害。" };
+export const metadata = pageMetadata("/heroes/huijian");
 const timeline = [
   { year: "2023", title: "开始调查电诈园区", text: "徽剑开始关注缅北、柬埔寨等地的电诈园区，搜集线索、整理证据，并通过个人平台持续披露调查发现。" },
   {

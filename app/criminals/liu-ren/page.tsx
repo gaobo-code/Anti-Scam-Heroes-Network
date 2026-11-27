@@ -1,16 +1,13 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { Suspense } from "react";
+import { pageMetadata } from "../../seo";
 import SiteFooter from "../../site-footer";
 import SiteHeader from "../../site-header";
 import { liuRenLinkId } from "../liu-ren-link";
 import { caseReport, liuRenInvestigation, policeReport } from "../sources";
 import "../criminals.css";
 
-export const metadata: Metadata = {
-  title: "刘忍介绍",
-  description: "根据公开报道与官方文件整理刘忍的早年经历、在柬商业及商会活动、金贝集团案侦办进展，以及与徽剑案的关联。",
-};
+export const metadata = pageMetadata("/criminals/liu-ren");
 
 const backToList = { href: `/criminals#${liuRenLinkId}`, label: "返回原处" };
 const chamberReport = "https://www.chinanews.com.cn/hr/2015/06-17/7351382.shtml";

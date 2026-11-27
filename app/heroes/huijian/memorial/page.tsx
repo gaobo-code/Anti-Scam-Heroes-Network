@@ -1,8 +1,9 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
+import { pageMetadata } from "../../../seo";
 import SiteHeader from "../../../site-header";
 import MemorialExperience from "./memorial-experience";
 
-export const metadata: Metadata = { title: "祭奠徽剑", description: "为反诈英雄徽剑（吴恺）献上一束花。" };
+export const metadata = pageMetadata("/heroes/huijian/memorial");
 
 export const viewport: Viewport = { interactiveWidget: "resizes-content" };
 
