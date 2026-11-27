@@ -199,7 +199,6 @@
   .bio-history-link { font-size:15px; gap:6px; padding-inline:8px; }
   .bio-history-icon { width:26px; height:26px; }
   .bio-history-icon::after { top:7px; left:12px; }
-  .bio-accountability-link { font-size:15px; width:100%; }
   .bio-profile { padding-top:24px; }
 }
 @media(max-width:320px) {

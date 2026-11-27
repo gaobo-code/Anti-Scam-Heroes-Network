@@ -34,7 +34,7 @@ export default function HistoryRecords() {
   const isMobile = useSyncExternalStore(subscribeToMobileQuery, isMobileLayout, isMobileOnServer);
   const [currentPage, setCurrentPage] = useState(1);
   const [mobileCount, setMobileCount] = useState(pageSize);
-  const headingRef = useRef<HTMLHeadingElement>(null);
+  const tableRef = useRef<HTMLTableElement>(null);
   const loadMoreRef = useRef<HTMLButtonElement>(null);
   const total = mockRecords.length;
   const start = isMobile ? 0 : (currentPage - 1) * pageSize;
@@ -58,22 +58,14 @@ export default function HistoryRecords() {
   function goToPage(page: number) {
     if (page < 1 || page > pageCount || page === currentPage) return;
     setCurrentPage(page);
-    headingRef.current?.focus({ preventScroll: true });
-    headingRef.current?.scrollIntoView({ block: "start", behavior: "instant" });
+    tableRef.current?.focus({ preventScroll: true });
+    tableRef.current?.scrollIntoView({ block: "start", behavior: "instant" });
   }
 
   return (
-    <section className="history-records" aria-labelledby="record-title">
-      <div className="history-record-heading">
-        <h2 id="record-title" ref={headingRef} tabIndex={-1}>祭奠记录</h2>
-        <p id="record-status" className="history-record-status">
-          <span>示例数据</span>
-          <span>{total} 条</span>
-        </p>
-      </div>
-
+    <section className="history-records" aria-label="祭奠记录">
       <div className="history-table-frame">
-        <table className="history-table" aria-labelledby="record-title" aria-describedby="record-status">
+        <table className="history-table" aria-label="祭奠记录" ref={tableRef} tabIndex={-1}>
           <thead>
             <tr>
               <th className="history-date-column" scope="col" aria-sort="descending">日期</th>
@@ -108,7 +100,6 @@ export default function HistoryRecords() {
             })}
           </tbody>
         </table>
-        <p className="history-table-note">按祭奠时间从新到旧排列 · 北京时间</p>
       </div>
 
       <div className="history-pagination">
