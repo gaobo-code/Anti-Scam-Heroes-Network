@@ -469,14 +469,9 @@
 }
 
 .criminals-verdicts h3 {
+  margin-bottom: 14px;
   font-size: clamp(1.15rem, 2.15vw, 1.5rem);
   font-weight: 750;
-}
-
-.criminals-verdicts p {
-  margin: 6px 0 14px;
-  color: var(--case-muted);
-  font-size: .875rem;
 }
 
 .criminals-table-frame {
@@ -566,6 +561,10 @@
   .criminals-case-grid > * {
     grid-column: 1;
     grid-row: auto;
+  }
+
+  .criminals-proposal {
+    margin-top: 8px;
   }
 }
 

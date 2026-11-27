@@ -66,9 +66,8 @@ function VerdictTable() {
   return (
     <section className="criminals-verdicts" aria-labelledby="verdicts-title">
       <h3 id="verdicts-title">实际判决 · 共 {convictedCount} 人</h3>
-      <p id="verdicts-note">罪名和刑罚依据所提供名单及公开报道整理。个人资料和前科标注按所提供名单列出。</p>
       <div className="criminals-table-frame">
-        <table className="criminals-table" aria-labelledby="verdicts-title" aria-describedby="verdicts-note">
+        <table className="criminals-table" aria-labelledby="verdicts-title">
           <thead>
             <tr>
               <th scope="col">姓名</th>
@@ -157,7 +156,7 @@ export default function CriminalsPage() {
             </div>
           </CaseSection>
 
-          <CaseSection {...cases.rumor} proposal={<p>涉事者应判处十年徒刑</p>}>
+          <CaseSection {...cases.rumor} proposal={<p>涉事者应判处八年徒刑</p>}>
             <p>据界面新闻引述知情者说法，吴恺遇害后，有人向其支付宝账户转入 1.1 万元，并在境外平台传播收款截图，声称吴恺因敲诈勒索被警方带走。材料中的转账者及传播者身份尚未核实。</p>
             <a className="criminals-source" href={rumorReport} target="_blank" rel="noopener">来源：界面新闻发布的知情者说法</a>
           </CaseSection>
