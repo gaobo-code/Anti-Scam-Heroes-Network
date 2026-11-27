@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171c20">
+  <meta name="robots" content="noindex">
+  <title>暂时无法连接网络｜反诈英雄网</title>
+  <style>
+    :root { color-scheme: dark; background: #171c20; color: #f1f2e9; font: 16px/1.7 "Microsoft YaHei", "PingFang SC", sans-serif; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; }
+    main { width: min(32rem, calc(100% - 3rem)); padding-block: 2rem; }
+    h1 { margin: .25rem 0; font-size: clamp(1.75rem, 6vw, 3rem); line-height: 1.2; }
+    p { color: #b3bbb6; }
+    .site-name { color: #d5ee91; font-weight: 700; }
+    button { min-height: 44px; padding: .55rem 1.2rem; border: 0; border-radius: .25rem; color: #171c20; background: #d5ee91; font: inherit; font-weight: 700; cursor: pointer; }
+    button:focus-visible { outline: 2px solid #d5ee91; outline-offset: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="site-name">反诈英雄网</p>
+    <h1>暂时无法连接网络</h1>
+    <p>网络恢复后，重试即可打开当前页面。</p>
+    <button type="button" id="retry">重试</button>
+  </main>
+  <script>
+    document.getElementById("retry").addEventListener("click", () => location.reload());
+  </script>
+</body>
+</html>
