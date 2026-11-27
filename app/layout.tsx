@@ -16,6 +16,25 @@ export const viewport: Viewport = { themeColor: "#171c20" };
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="zh-CN">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          if (performance.getEntriesByType("navigation")[0]?.type === "reload") {
+            const previousRestoration = history.scrollRestoration;
+            history.scrollRestoration = "manual";
+
+            const resetScroll = () => {
+              window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+              // The browser can still adjust the scroll position after pageshow.
+              requestAnimationFrame(() => {
+                window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                history.scrollRestoration = previousRestoration;
+              });
+            };
+
+            window.addEventListener("pageshow", resetScroll, { once: true });
+          }
+        ` }} />
+      </head>
       <body>
         {children}
         <ServiceWorkerRegistration />
