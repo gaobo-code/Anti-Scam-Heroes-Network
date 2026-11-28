@@ -92,6 +92,12 @@
   gap: 6px;
 }
 
+@media (width >= 768px) {
+  .site-header-pair .site-header-nav:has(> .qq-group--header) {
+    gap: 14px;
+  }
+}
+
 .site-header-pair .site-header-nav > :is(a, button) {
   justify-content: center;
   gap: 8px;

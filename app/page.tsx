@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import QqGroup from "./qq-group";
 import { pageMetadata } from "./seo";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
@@ -12,7 +13,7 @@ const tributeImageSizes = "(max-width: 767px) min(89vw, 542px), (max-width: 1100
 export default function Home() {
   return (
     <main className="landing landing-home" id="top">
-      <SiteHeader action={{ href: "/heroes/huijian", label: "阅读故事" }} showFriendlyLinks />
+      <SiteHeader action={{ href: "/heroes/huijian", label: "阅读故事" }} showFriendlyLinks showQqGroup />
       <section className="landing-hero" aria-labelledby="landing-title">
         <div className="landing-label"><span><i /> 纪念与电诈恶势力抗争的英雄</span><span className="landing-motto">铭记牺牲 / 守护正义</span></div>
         <div className="landing-composition">
@@ -35,6 +36,7 @@ export default function Home() {
         </div>
       </section>
       <div className="landing-ribbon" aria-hidden="true"><span>铭记英雄</span><i>✳</i><span>REMEMBER THE BRAVE</span><i>✳</i><span>不忘牺牲，守护正义</span><i>✳</i><span>铭记英雄</span></div>
+      <QqGroup placement="content" />
       <section className="landing-purpose" id="purpose" aria-labelledby="purpose-title">
         <div>
           <div className="landing-purpose-label">

@@ -1,16 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import FriendlyLinks from "./friendly-links";
+import QqGroup from "./qq-group";
 
 type SiteHeaderProps = {
   action: { href: string; label: string };
   showFriendlyLinks?: boolean;
+  showQqGroup?: boolean;
   overlay?: boolean;
 };
 
 export default function SiteHeader({
   action,
   showFriendlyLinks = false,
+  showQqGroup = false,
   overlay = false,
 }: SiteHeaderProps) {
   return (
@@ -23,6 +26,7 @@ export default function SiteHeader({
           <span>反诈英雄网</span>
         </Link>
         <div className="site-header-nav">
+          {showQqGroup && <QqGroup placement="header" />}
           {showFriendlyLinks && <FriendlyLinks />}
           <Link className="site-header-action" href={action.href}>{action.label}</Link>
         </div>

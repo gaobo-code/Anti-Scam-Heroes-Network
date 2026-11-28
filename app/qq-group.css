@@ -1,0 +1,100 @@
+.qq-group {
+  --qq-accent: var(--lime, #d5ee91);
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #d5ee9140;
+  color: #edf2e7;
+  line-height: 1.25;
+}
+
+.qq-group-identity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qq-group-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d5ee9138;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, #374638, #252f28 74%);
+}
+
+.qq-group-name {
+  font-weight: 600;
+}
+
+.qq-group-number {
+  color: var(--qq-accent);
+  font: 600 14px/1.25 "Consolas", monospace;
+  font-variant-numeric: tabular-nums;
+  user-select: all;
+}
+
+.qq-group--header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 9px;
+  min-height: 44px;
+  padding: 4px 13px 4px 8px;
+  border-color: #dfabb92e;
+  border-radius: 9px;
+  background: #412c35;
+  color: #fff1f3;
+  white-space: nowrap;
+}
+
+.qq-group img {
+  flex: none;
+  filter: drop-shadow(0 0 1px #ffffff80);
+}
+
+.qq-group-details {
+  display: grid;
+  gap: 3px;
+}
+
+.qq-group--header .qq-group-name {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.qq-group--header .qq-group-number {
+  color: #e6c0cc;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: .08em;
+}
+
+.qq-group--content {
+  display: none;
+}
+
+@media (width < 768px) {
+  .qq-group--header {
+    display: none;
+  }
+
+  .qq-group--content {
+    display: flex;
+    gap: 8px 14px;
+    flex-wrap: wrap;
+    margin-block: 24px;
+    padding: 12px clamp(12px, 4vw, 22px);
+    border-inline-start: 3px solid var(--qq-accent);
+    border-radius: 4px 13px 13px 4px;
+    background: radial-gradient(ellipse at right top, #d5ee911a, transparent 75%), #232d26;
+    font-size: 15px;
+  }
+
+  .qq-group--content .qq-group-number {
+    font-size: clamp(18px, 5vw, 22px);
+    letter-spacing: .04em;
+    white-space: nowrap;
+  }
+}
